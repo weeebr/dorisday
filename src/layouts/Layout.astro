@@ -70,7 +70,8 @@ const navItems = [
     left: 0;
     right: 0;
     z-index: var(--z-header);
-    transition: background-color var(--transition-normal);
+    transition: all var(--transition-normal);
+    background: transparent;
   }
 
   .header.scrolled {
@@ -83,6 +84,7 @@ const navItems = [
     align-items: center;
     justify-content: space-between;
     padding-block: var(--space-component-md);
+    position: relative;
   }
 
   /* Mobile Menu Toggle */
@@ -92,6 +94,8 @@ const navItems = [
     border: none;
     cursor: pointer;
     padding: var(--space-component-xs);
+    position: relative;
+    z-index: calc(var(--z-overlay) + 1);
   }
 
   .menu-toggle span {
@@ -100,7 +104,7 @@ const navItems = [
     height: 2px;
     background: currentColor;
     margin: 4px 0;
-    transition: var(--transition-normal);
+    transition: transform var(--transition-normal);
   }
 
   @media (max-width: 1300px) {
@@ -118,6 +122,15 @@ const navItems = [
 
     .menu-toggle.active span:nth-child(3) {
       transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    body.menu-open .header {
+      background: transparent;
+      backdrop-filter: none;
     }
   }
 </style>
