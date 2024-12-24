@@ -8,29 +8,57 @@ interface Props {
 
 const {
   items = [
-    { href: '/willkommen', text: 'WILLKOMMEN' },
-    { href: '/bed-being', text: 'BED & BEING' },
-    { href: '/nomad-cafe', text: 'NOMAD CAFÉ' },
-    { href: '/kultur', text: 'KULTUR' },
-    { href: '/kontakt', text: 'KONTAKT' },
+    { href: '#welcome', text: 'WILLKOMMEN' },
+    { href: '#collection', text: 'KOLLEKTION' },
+    { href: '#cafe', text: 'NOMAD CAFÉ' },
+    { href: '#kultur', text: 'KULTUR' },
+    { href: '#contact', text: 'KONTAKT' },
   ],
 } = Astro.props;
 ---
 
 <nav class="nav" aria-label="Hauptnavigation">
-  <ul>
-    {
-      items.map((item) => (
-        <li>
-          <a href={item.href} class="nav-link">
-            {item.text}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+  <div class="nav-backdrop"></div>
+  <div class="nav-content">
+    <ul>
+      {
+        items.map((item) => (
+          <li>
+            <a href={item.href} class="nav-link">
+              {item.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </nav>
 
 <style>
   @import '@/styles/navigation.css';
 </style>
+
+<script>
+  // Close mobile menu when clicking on a link
+  document.querySelectorAll('.nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      document.body.classList.remove('menu-open');
+      const menuToggle = document.querySelector('.menu-toggle');
+      if (menuToggle) {
+        menuToggle.classList.remove('active');
+      }
+    });
+  });
+
+  // Close mobile menu when clicking on backdrop
+  const backdrop = document.querySelector('.nav-backdrop');
+  if (backdrop) {
+    backdrop.addEventListener('click', () => {
+      document.body.classList.remove('menu-open');
+      const menuToggle = document.querySelector('.menu-toggle');
+      if (menuToggle) {
+        menuToggle.classList.remove('active');
+      }
+    });
+  }
+</script>
