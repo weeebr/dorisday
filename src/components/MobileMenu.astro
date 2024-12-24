@@ -1,17 +1,10 @@
 ---
 interface Props {
   class?: string;
+  items: Array<{ href: string; text: string }>;
 }
 
-const { class: className } = Astro.props;
-
-const menuItems = [
-  { href: '#willkommen', text: 'WILLKOMMEN' },
-  { href: '#bed-being', text: 'BED & BEING' },
-  { href: '#nomad-cafe', text: 'NOMAD CAFÉ' },
-  { href: '#kultur', text: 'KULTUR' },
-  { href: '#kontakt', text: 'KONTAKT' },
-];
+const { class: className, items } = Astro.props;
 ---
 
 <div class:list={['mobile-menu', className]}>
@@ -25,7 +18,7 @@ const menuItems = [
   <nav class="mobile-nav">
     <ul class="mobile-nav-items">
       {
-        menuItems.map((item, index) => (
+        items.map((item, index) => (
           <li style={`--item-index: ${index};`}>
             <a href={item.href} class="nav-link">
               {item.text}
@@ -52,6 +45,7 @@ const menuItems = [
       align-items: center;
     }
 
+    /* Toggle button */
     .menu-toggle {
       width: 28px;
       height: 20px;
@@ -66,7 +60,6 @@ const menuItems = [
       z-index: 1001;
     }
 
-    /* Enhanced click target */
     .menu-toggle::before {
       content: '';
       position: absolute;
@@ -84,10 +77,9 @@ const menuItems = [
       background: currentColor;
       transition: transform 0.3s var(--ease-out-circ);
       transform-origin: right center;
-      pointer-events: auto;
+      pointer-events: none;
     }
 
-    /* Hamburger animation */
     .menu-toggle.active span:nth-child(1) {
       transform: translateY(-2px) rotate(-45deg);
     }
@@ -118,7 +110,7 @@ const menuItems = [
       pointer-events: none;
     }
 
-    /* Full screen menu */
+    /* Navigation menu */
     .mobile-nav {
       position: fixed;
       top: 0;
@@ -146,12 +138,11 @@ const menuItems = [
 
     .mobile-nav-items {
       list-style: none;
-      padding: 0;
+      padding: 0 2rem;
       margin: 0;
       display: flex;
       flex-direction: column;
       width: 100%;
-      padding: 0 2rem;
     }
 
     .mobile-nav-items li {
@@ -161,8 +152,10 @@ const menuItems = [
         transform 0.6s var(--ease-out-circ),
         opacity 0.6s var(--ease-out-circ);
       transition-delay: calc(0.15s + (var(--item-index, 0) * 0.05s));
+      cursor: pointer;
     }
 
+    /* Navigation links */
     .nav-link {
       color: var(--color-text-muted);
       text-decoration: none;
@@ -176,10 +169,7 @@ const menuItems = [
       cursor: pointer;
       white-space: nowrap;
       transition: color var(--transition-normal);
-    }
-
-    li {
-      cursor: pointer;
+      user-select: none;
     }
 
     .nav-link:hover {
@@ -202,7 +192,7 @@ const menuItems = [
       width: 2rem;
     }
 
-    /* Show menu when active */
+    /* Active states */
     .menu-toggle.active ~ .mobile-backdrop {
       opacity: 1;
       visibility: visible;
@@ -223,7 +213,7 @@ const menuItems = [
       transform: translateY(0);
     }
 
-    /* Closing state */
+    /* Closing states */
     .menu-toggle:not(.active) ~ .mobile-backdrop,
     .menu-toggle:not(.active) ~ .mobile-nav {
       transition-delay: 0s;
@@ -242,7 +232,7 @@ const menuItems = [
       transition-delay: 0s;
     }
 
-    /* Content blur when menu is open */
+    /* Content states */
     :global(body.menu-open main) {
       pointer-events: none;
       user-select: none;
@@ -257,7 +247,7 @@ const menuItems = [
       transition: filter 0.5s var(--ease-out-circ);
     }
 
-    /* Logo transition states */
+    /* Logo states */
     :global(.logo) {
       position: relative;
       z-index: 1;
@@ -281,11 +271,6 @@ const menuItems = [
       transition:
         transform 0.5s var(--ease-out-circ),
         opacity 0.3s var(--ease-out-circ);
-    }
-
-    /* Prevent interaction with underlying elements when menu is open */
-    :global(body.menu-open) {
-      overflow: hidden;
     }
   }
 </style>
