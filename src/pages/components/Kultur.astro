@@ -42,13 +42,6 @@ const events = [
       }
     </div>
 
-    <div class="kultur-image">
-      <img
-        src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&q=80"
-        alt="Kulturelle Veranstaltung im Doris Day"
-      />
-    </div>
-
     <div class="kultur-cta">
       <Button href="/kultur" variant="secondary">Alle Veranstaltungen</Button>
     </div>
@@ -57,22 +50,47 @@ const events = [
 
 <style>
   .kultur-outer {
+    position: relative;
     width: 100%;
-    padding: var(--space-layout-xl) 0;
-    background: var(--color-surface-muted);
+    min-height: 100vh;
+    background-image: url('https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+
+  .kultur-outer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
   }
 
   .kultur-inner {
+    position: relative;
     width: min(100% - 4rem, var(--size-content-xl));
     margin-inline: auto;
+    padding: var(--space-layout-xl) 0;
+  }
+
+  .image-container,
+  .image-container__image,
+  .content-wrapper {
+    display: none;
   }
 
   h2 {
     text-align: center;
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-xl);
     letter-spacing: var(--letter-spacing-wider);
     margin-bottom: var(--space-component-md);
     font-weight: var(--font-weight-light);
+    color: var(--color-text-base);
   }
 
   .section-intro {
@@ -81,88 +99,78 @@ const events = [
     margin-inline: auto;
     margin-bottom: var(--space-layout-lg);
     color: var(--color-text-muted);
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-sm);
     letter-spacing: var(--letter-spacing-wide);
     line-height: var(--line-height-relaxed);
   }
 
   .events-grid {
     display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-layout-md);
     margin-bottom: var(--space-layout-xl);
   }
 
   .event-card {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: var(--space-layout-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-component-md);
     padding: var(--space-layout-md);
-    background: var(--color-surface-base);
-    align-items: center;
+    background: var(--color-surface-alt);
+    border: 1px solid var(--color-border-muted);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-normal);
+  }
+
+  .event-card:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: var(--color-text-muted);
   }
 
   .event-date {
-    font-size: var(--font-size-lg);
-    letter-spacing: var(--letter-spacing-wide);
-    color: var(--color-text-base);
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-sm);
+    letter-spacing: var(--letter-spacing-wider);
+    color: var(--color-text-muted);
     font-weight: var(--font-weight-light);
-    text-align: center;
-    border-right: 1px solid var(--color-border-muted);
-    padding-right: var(--space-layout-md);
+    border-bottom: 1px solid var(--color-border-muted);
+    padding-bottom: var(--space-component-sm);
   }
 
   .event-content h3 {
-    font-size: var(--font-size-lg);
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-base);
     letter-spacing: var(--letter-spacing-wide);
     margin-bottom: var(--space-component-sm);
     font-weight: var(--font-weight-light);
     color: var(--color-text-base);
+    line-height: var(--line-height-snug);
   }
 
   .event-content p {
     color: var(--color-text-muted);
     font-size: var(--font-size-sm);
-    letter-spacing: var(--letter-spacing-wide);
+    letter-spacing: var(--letter-spacing-normal);
     line-height: var(--line-height-relaxed);
-  }
-
-  .kultur-image {
-    margin-bottom: var(--space-layout-xl);
-    aspect-ratio: 21/9;
-    overflow: hidden;
-  }
-
-  .kultur-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform var(--transition-normal);
-  }
-
-  .kultur-image:hover img {
-    transform: scale(1.05);
   }
 
   .kultur-cta {
     text-align: center;
   }
 
+  @media (max-width: 1024px) {
+    .events-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   @media (max-width: 768px) {
-    .event-card {
+    .events-grid {
       grid-template-columns: 1fr;
+    }
+
+    .event-card {
       text-align: center;
-      gap: var(--space-component-lg);
-    }
-
-    .event-date {
-      border-right: none;
-      border-bottom: 1px solid var(--color-border-muted);
-      padding-right: 0;
-      padding-bottom: var(--space-component-lg);
-    }
-
-    .kultur-image {
-      aspect-ratio: 3/2;
     }
   }
 </style>

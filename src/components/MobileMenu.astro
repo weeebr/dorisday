@@ -1,0 +1,267 @@
+---
+interface Props {
+  class?: string;
+  items: Array<{ href: string; text: string }>;
+}
+
+const { class: className, items } = Astro.props;
+---
+
+<div class:list={['mobile-menu', className]}>
+  <button class="menu-toggle" aria-label="Toggle Menu">
+    <span class="menu-line"></span>
+    <span class="menu-line"></span>
+    <span class="menu-line"></span>
+  </button>
+
+  <nav class="mobile-nav">
+    <div class="mobile-nav-backdrop"></div>
+    <div class="mobile-nav-content">
+      <ul>
+        {
+          items.map((item, index) => (
+            <li style={`--item-index: ${index}`}>
+              <a href={item.href} class="nav-link">
+                {item.text}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<style>
+  :root {
+    --menu-transition-duration: 0.4s;
+    --menu-transition-timing: cubic-bezier(0.16, 1, 0.3, 1);
+    --menu-item-stagger: 0.05s;
+    --menu-width: 66vw;
+  }
+
+  .mobile-menu {
+    display: none;
+    position: relative;
+  }
+
+  @media (max-width: 1300px) {
+    .mobile-menu {
+      display: block;
+    }
+
+    .menu-toggle {
+      width: 32px;
+      height: 24px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      z-index: 1001;
+      transition: transform var(--menu-transition-duration) var(--menu-transition-timing);
+    }
+
+    .menu-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    .menu-line {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background: currentColor;
+      transform-origin: center;
+      transition:
+        transform var(--menu-transition-duration) var(--menu-transition-timing),
+        opacity calc(var(--menu-transition-duration) * 0.5) ease;
+    }
+
+    /* Hamburger animation */
+    .menu-toggle.active .menu-line:nth-child(1) {
+      transform: translateY(11px) rotate(45deg);
+    }
+
+    .menu-toggle.active .menu-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active .menu-line:nth-child(3) {
+      transform: translateY(-11px) rotate(-45deg);
+    }
+
+    /* Mobile Navigation */
+    .mobile-nav {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      justify-content: flex-end;
+      visibility: hidden;
+      z-index: 999;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .mobile-nav-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      transform: scale(0.95);
+      transform-origin: right;
+      transition:
+        opacity var(--menu-transition-duration) var(--menu-transition-timing),
+        transform var(--menu-transition-duration) var(--menu-transition-timing),
+        visibility 0s linear var(--menu-transition-duration);
+      cursor: pointer;
+    }
+
+    .mobile-nav-content {
+      position: relative;
+      width: var(--menu-width);
+      height: 100vh;
+      background: var(--color-surface-alt, #fff);
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+      padding: var(--space-3xl);
+      transform: translateX(100%);
+      transition: transform var(--menu-transition-duration) var(--menu-transition-timing);
+      display: flex;
+      align-items: center;
+      will-change: transform;
+    }
+
+    /* Active States */
+    .mobile-menu.active .mobile-nav {
+      visibility: visible;
+    }
+
+    .mobile-menu.active .mobile-nav-backdrop {
+      opacity: 1;
+      transform: scale(1);
+      transition-delay: 0s;
+    }
+
+    .mobile-menu.active .mobile-nav-content {
+      transform: translateX(0);
+    }
+
+    /* Navigation Items */
+    .mobile-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-layout-lg);
+      text-align: left;
+      width: 100%;
+      padding-left: var(--space-4xl);
+      transform: translateY(calc(var(--space-2xl)));
+    }
+
+    .mobile-nav li {
+      opacity: 0;
+      transform: translateX(30px);
+      transition:
+        opacity var(--menu-transition-duration) var(--menu-transition-timing),
+        transform var(--menu-transition-duration) var(--menu-transition-timing);
+      transition-delay: calc(
+        var(--menu-item-stagger) + var(--item-index) * var(--menu-item-stagger)
+      );
+    }
+
+    .mobile-menu.active .mobile-nav li {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .nav-link {
+      color: var(--color-text-muted);
+      font-size: var(--font-size-xl);
+      letter-spacing: var(--letter-spacing-wide);
+      padding: var(--space-component-md) var(--space-component-md) var(--space-component-md)
+        var(--space-layout-lg);
+      transition: all var(--transition-normal);
+      text-decoration: none;
+      font-weight: var(--font-weight-light);
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .nav-link:hover {
+      color: var(--color-text-base);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0.5rem;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: currentColor;
+      transition: width var(--transition-bounce);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  const init = () => {
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const menuToggle = mobileMenu?.querySelector('.menu-toggle');
+    const links = mobileMenu?.querySelectorAll('.nav-link');
+    const backdrop = mobileMenu?.querySelector('.mobile-nav-backdrop');
+
+    function toggleMenu(force?: boolean) {
+      const isActive = force !== undefined ? force : mobileMenu?.classList.contains('active');
+      mobileMenu?.classList.toggle('active', !isActive);
+      menuToggle?.classList.toggle('active', !isActive);
+      document.body.classList.toggle('menu-open', !isActive);
+    }
+
+    menuToggle?.addEventListener('click', () => toggleMenu());
+
+    links?.forEach((link) => {
+      link.addEventListener('click', () => {
+        toggleMenu(false);
+      });
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu?.classList.contains('active')) {
+        toggleMenu(false);
+      }
+    });
+
+    // Close menu on backdrop click
+    backdrop?.addEventListener('click', () => toggleMenu(false));
+
+    // Handle resize
+    let timeoutId: number;
+    window.addEventListener('resize', () => {
+      clearTimeout(timeoutId);
+      timeoutId = window.setTimeout(() => {
+        if (window.innerWidth > 1300 && mobileMenu?.classList.contains('active')) {
+          toggleMenu(false);
+        }
+      }, 250);
+    });
+  };
+
+  // Initialize when the DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+</script>

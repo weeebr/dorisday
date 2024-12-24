@@ -23,7 +23,7 @@
   font-size: var(--font-size-base);
   letter-spacing: var(--letter-spacing-wide);
   padding: var(--space-component-md);
-  transition: color var(--transition-normal);
+  transition: all var(--transition-normal);
   text-decoration: none;
   font-weight: var(--font-weight-light);
   position: relative;
@@ -42,7 +42,7 @@
   width: 0;
   height: 1px;
   background: currentColor;
-  transition: all var(--transition-normal);
+  transition: all var(--transition-bounce);
   transform: translateX(-50%);
 }
 
@@ -67,7 +67,9 @@
   .nav-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     opacity: 0;
     transition: opacity var(--transition-normal);
   }
@@ -78,12 +80,14 @@
     right: 0;
     width: min(100%, 400px);
     height: 100%;
-    background: var(--color-surface-base);
+    background: var(--color-surface-alt);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
     transform: translateX(100%);
-    transition: transform var(--transition-normal);
+    transition: transform var(--transition-bounce);
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-y: auto;
   }
 
   .nav ul {
@@ -101,13 +105,27 @@
     display: inline-block;
     width: 100%;
     text-align: center;
+    transform: translateX(50px);
+    opacity: 0;
+    transition: all var(--transition-bounce);
+    transition-delay: calc(var(--item-index, 0) * 0.1s);
+  }
+
+  .nav-link:hover {
+    color: var(--color-text-base);
+    transform: translateX(0) scale(1.05);
   }
 
   .nav-link::after {
     bottom: 1rem;
+    background: linear-gradient(90deg, #2a1810, #4a3830);
   }
 
   /* Open State */
+  body.menu-open {
+    overflow: hidden;
+  }
+
   body.menu-open .nav {
     visibility: visible;
     opacity: 1;
@@ -122,27 +140,49 @@
     transform: translateX(0);
   }
 
+  body.menu-open .nav-link {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
   /* Menu Toggle Animation */
   .menu-toggle {
     z-index: calc(var(--z-overlay) + 1);
+    width: 30px;
+    height: 24px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform var(--transition-normal);
+  }
+
+  .menu-toggle:hover {
+    transform: scale(1.1);
   }
 
   .menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--color-text-base);
     transform-origin: center;
-    transition:
-      transform var(--transition-normal),
-      opacity var(--transition-normal);
+    transition: all var(--transition-normal);
   }
 
   .menu-toggle.active span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
+    transform: translateY(11px) rotate(45deg);
   }
 
   .menu-toggle.active span:nth-child(2) {
     opacity: 0;
+    transform: translateX(-10px);
   }
 
   .menu-toggle.active span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
+    transform: translateY(-11px) rotate(-45deg);
   }
 }

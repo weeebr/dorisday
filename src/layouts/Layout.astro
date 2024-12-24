@@ -1,6 +1,7 @@
 ---
 import Logo from '../components/Logo.astro';
 import Navigation from '../components/Navigation.astro';
+import MobileMenu from '../components/MobileMenu.astro';
 import Footer from '../components/Footer.astro';
 
 interface Props {
@@ -22,16 +23,17 @@ const navItems = [
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Doris Day - Zeitlose Mode & Eleganz in Aarau" />
+    <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@100;300;400;500&display=swap"
       rel="stylesheet"
     />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
   </head>
   <body>
     <header class="header">
@@ -41,11 +43,7 @@ const navItems = [
             <Logo size="small" />
           </a>
           <Navigation items={navItems} />
-          <button class="menu-toggle" aria-label="Toggle Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+          <MobileMenu items={navItems} />
         </div>
       </div>
     </header>
@@ -70,13 +68,19 @@ const navItems = [
     left: 0;
     right: 0;
     z-index: var(--z-header);
-    transition: all var(--transition-normal);
+    transition:
+      background-color var(--transition-normal),
+      backdrop-filter var(--transition-normal),
+      -webkit-backdrop-filter var(--transition-normal);
     background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   .header.scrolled {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   .header-content {
@@ -87,43 +91,16 @@ const navItems = [
     position: relative;
   }
 
-  /* Mobile Menu Toggle */
-  .menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: var(--space-component-xs);
+  .header-logo {
+    transition:
+      transform var(--transition-normal),
+      scale var(--transition-normal);
+    z-index: 1000;
     position: relative;
-    z-index: calc(var(--z-overlay) + 1);
-  }
-
-  .menu-toggle span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: currentColor;
-    margin: 4px 0;
-    transition: transform var(--transition-normal);
+    cursor: pointer;
   }
 
   @media (max-width: 1300px) {
-    .menu-toggle {
-      display: block;
-    }
-
-    .menu-toggle.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .menu-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .menu-toggle.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(7px, -6px);
-    }
-
     body.menu-open {
       overflow: hidden;
     }
@@ -131,6 +108,18 @@ const navItems = [
     body.menu-open .header {
       background: transparent;
       backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    body.menu-open .header.scrolled {
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    body.menu-open .header-logo {
+      transform: translateY(calc(37vh - var(--space-component-md)));
+      scale: 1.25;
     }
   }
 </style>
@@ -138,21 +127,36 @@ const navItems = [
 <script>
   // Header scroll effect
   const header = document.querySelector('.header') as HTMLElement;
-  const menuToggle = document.querySelector('.menu-toggle') as HTMLButtonElement;
 
-  if (header && menuToggle) {
-    window.addEventListener('scroll', () => {
+  if (header) {
+    const updateHeaderState = () => {
       if (window.scrollY > 50) {
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
       }
-    });
+    };
 
-    // Mobile menu toggle
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('active');
-      document.body.classList.toggle('menu-open');
+    // Initial state
+    updateHeaderState();
+
+    // Update on scroll
+    window.addEventListener('scroll', updateHeaderState, { passive: true });
+
+    // Handle hash navigation
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+        if (targetId) {
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+            // Update URL without scrolling
+            history.pushState(null, '', targetId);
+          }
+        }
+      });
     });
   }
 </script>

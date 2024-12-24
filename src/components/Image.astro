@@ -1,0 +1,50 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  aspectRatio?: string;
+}
+
+const { src, alt, class: className, aspectRatio = '1/1' } = Astro.props;
+---
+
+<div class:list={['modern-image', className]}>
+  <img {src} {alt} />
+</div>
+
+<style>
+  .modern-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    aspect-ratio: var(--aspect-ratio, 1/1);
+  }
+
+  .modern-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.02));
+    z-index: 1;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  .modern-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+    will-change: transform;
+  }
+
+  .modern-image:hover img {
+    transform: scale(var(--scale-hover));
+  }
+
+  .modern-image:hover::before {
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.04));
+  }
+</style>

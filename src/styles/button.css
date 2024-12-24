@@ -7,18 +7,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 3rem;
+  padding: 1.25rem 3rem;
   font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-thin);
-  letter-spacing: var(--letter-spacing-widest);
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--letter-spacing-wider);
   text-transform: uppercase;
-  border: 1px solid currentColor;
+  border: 1px solid var(--color-text-base);
   background: transparent;
   color: var(--color-text-base);
   transition: all var(--transition-normal);
   cursor: pointer;
   text-decoration: none;
-  min-width: 200px;
+  min-width: 220px;
 }
 
 .button:hover {
@@ -41,8 +41,7 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .button {
-    padding: 0.875rem 2.5rem;
-    font-size: var(--font-size-xs);
-    min-width: 180px;
+    padding: 1rem 2.5rem;
+    min-width: 200px;
   }
 }
