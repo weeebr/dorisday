@@ -1,0 +1,146 @@
+.contact-section {
+  background-color: var(--color-surface-base);
+}
+
+.contact-logo {
+  height: 60px;
+  width: auto;
+}
+
+.contact-heading {
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  font-weight: var(--font-weight-light);
+}
+
+.contact-text {
+  max-width: var(--size-content-sm);
+  margin-inline: auto;
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+.contact-form {
+  max-width: var(--size-content-md);
+  margin-inline: auto;
+}
+
+.form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-component-xs);
+}
+
+.form-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-medium);
+}
+
+.required {
+  color: #e53e3e;
+  margin-left: 0.25rem;
+}
+
+.input {
+  padding: var(--space-component-sm) var(--space-component-md);
+  border: 1px solid var(--color-surface-muted);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-base);
+  font-size: var(--font-size-base);
+  transition: all var(--transition-normal);
+}
+
+.input:hover {
+  border-color: var(--color-primary-light);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary-base);
+  box-shadow: 0 0 0 3px rgba(184, 168, 152, 0.2);
+}
+
+.input[aria-invalid='true'] {
+  border-color: #e53e3e;
+}
+
+.input--large {
+  padding: var(--space-component-md);
+  font-size: var(--font-size-lg);
+}
+
+.error-message {
+  font-size: var(--font-size-sm);
+  color: #e53e3e;
+  min-height: 1.5em;
+}
+
+.form-status {
+  text-align: center;
+  padding: var(--space-component-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.form-status:not(:empty) {
+  opacity: 1;
+}
+
+.form-status--success {
+  background-color: #c6f6d5;
+  color: #22543d;
+}
+
+.form-status--error {
+  background-color: #fed7d7;
+  color: #822727;
+}
+
+.button--loading .button__text {
+  visibility: hidden;
+}
+
+.button--loading .button__loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-surface-base);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: button-spin 0.6s linear infinite;
+}
+
+@keyframes button-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-logo {
+    height: 40px;
+  }
+
+  .contact-heading {
+    font-size: var(--font-size-xl);
+  }
+
+  .contact-text {
+    font-size: var(--font-size-base);
+  }
+
+  .form-group {
+    gap: var(--space-component-xs);
+  }
+
+  .input {
+    padding: var(--space-component-xs) var(--space-component-sm);
+  }
+}

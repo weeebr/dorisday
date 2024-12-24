@@ -1,0 +1,117 @@
+---
+import '../styles/logo.css';
+
+interface Props {
+  variant?: 'small' | 'medium' | 'large';
+  class?: string;
+}
+
+const { variant = 'medium', class: className = '' } = Astro.props;
+
+const sizes = {
+  small: 40,
+  medium: 60,
+  large: 80,
+};
+
+const size = sizes[variant];
+---
+
+<div class:list={['logo', `logo--${variant}`, className]}>
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 120 120"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="logo-icon"
+  >
+    <!-- Outer circles -->
+    <circle cx="60" cy="60" r="58" stroke="currentColor" stroke-width="1" fill="none"></circle>
+    <circle cx="60" cy="60" r="54" stroke="currentColor" stroke-width="1" fill="none"></circle>
+    <circle cx="60" cy="60" r="50" stroke="currentColor" stroke-width="0.5" fill="none"></circle>
+
+    <!-- Decorative patterns -->
+    <g opacity="0.7">
+      <path d="M60 10C85.4 10 106 30.6 106 56" stroke="currentColor" stroke-width="1" fill="none"
+      ></path>
+      <path d="M60 14C83.2 14 102 32.8 102 56" stroke="currentColor" stroke-width="1" fill="none"
+      ></path>
+      <path d="M60 18C81 18 98 35 98 56" stroke="currentColor" stroke-width="1" fill="none"></path>
+
+      <!-- Rotate these patterns -->
+      <animateTransform
+        attributeName="transform"
+        type="rotate"
+        from="0 60 60"
+        to="360 60 60"
+        dur="60s"
+        repeatCount="indefinite"></animateTransform>
+    </g>
+
+    <!-- Radial lines -->
+    <g opacity="0.5">
+      <line x1="60" y1="60" x2="60" y2="10" stroke="currentColor" stroke-width="0.5"></line>
+      <line x1="60" y1="60" x2="110" y2="60" stroke="currentColor" stroke-width="0.5"></line>
+      <line x1="60" y1="60" x2="60" y2="110" stroke="currentColor" stroke-width="0.5"></line>
+      <line x1="60" y1="60" x2="10" y2="60" stroke="currentColor" stroke-width="0.5"></line>
+      <line x1="60" y1="60" x2="93.3" y2="26.7" stroke="currentColor" stroke-width="0.5"></line>
+      <line x1="60" y1="60" x2="93.3" y2="93.3" stroke="currentColor" stroke-width="0.5"></line>
+      <line x1="60" y1="60" x2="26.7" y2="93.3" stroke="currentColor" stroke-width="0.5"></line>
+      <line x1="60" y1="60" x2="26.7" y2="26.7" stroke="currentColor" stroke-width="0.5"></line>
+    </g>
+
+    <!-- Inner circles -->
+    <circle cx="60" cy="60" r="40" stroke="currentColor" stroke-width="1" fill="none"></circle>
+    <circle cx="60" cy="60" r="36" stroke="currentColor" stroke-width="1" fill="none"></circle>
+    <circle cx="60" cy="60" r="32" stroke="currentColor" stroke-width="0.5" fill="none"></circle>
+
+    <!-- Decorative inner pattern -->
+    <g opacity="0.7">
+      <circle cx="60" cy="60" r="28" stroke="currentColor" stroke-width="0.5" fill="none"></circle>
+      <circle cx="60" cy="60" r="24" stroke="currentColor" stroke-width="0.5" fill="none"></circle>
+      <circle cx="60" cy="60" r="20" stroke="currentColor" stroke-width="0.5" fill="none"></circle>
+    </g>
+
+    <!-- Center dot -->
+    <circle cx="60" cy="60" r="2" fill="currentColor"></circle>
+  </svg>
+</div>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-icon {
+    color: var(--color-primary-base);
+    transition: transform var(--transition-normal);
+  }
+
+  .logo:hover .logo-icon {
+    transform: rotate(180deg);
+  }
+
+  /* Dark mode support */
+  :global([data-theme='dark']) .logo-icon {
+    color: var(--color-surface-base);
+  }
+
+  /* Size variants */
+  .logo--small {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo--medium {
+    width: 60px;
+    height: 60px;
+  }
+
+  .logo--large {
+    width: 80px;
+    height: 80px;
+  }
+</style>

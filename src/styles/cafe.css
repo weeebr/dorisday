@@ -1,0 +1,39 @@
+.cafe-section {
+  background-color: var(--color-surface-alt);
+}
+
+.cafe-grid {
+  gap: var(--space-component-lg);
+}
+
+.cafe-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-component-lg);
+}
+
+.cafe-heading {
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  font-weight: var(--font-weight-light);
+}
+
+.cafe-text {
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+@media (max-width: 768px) {
+  .cafe-content {
+    padding: var(--space-component-md);
+  }
+
+  .cafe-heading {
+    font-size: var(--font-size-xl);
+  }
+
+  .cafe-text {
+    font-size: var(--font-size-base);
+  }
+}

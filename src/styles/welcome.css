@@ -1,0 +1,22 @@
+.welcome-section {
+  background-color: var(--color-surface-alt);
+}
+
+.welcome-heading {
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  font-weight: var(--font-weight-light);
+}
+
+.welcome-text {
+  max-width: var(--size-content-md);
+  margin-inline: auto;
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 768px) {
+  .welcome-text {
+    font-size: var(--font-size-base);
+  }
+}

@@ -2,14 +2,21 @@
 
 ---
 
-<section
-  class="hero"
-  style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=2400&q=80');"
->
-  <div class="container">
-    <h1 class="text-large mb-2">FLUSSHAUS</h1>
-    <p class="text-medium mb-2">NOMAD LIVING</p>
-    <a href="#welcome" class="button">Discover More</a>
+<section class="section hero-section">
+  <div class="image-container image-container--overlay">
+    <img
+      src="https://images.unsplash.com/photo-1542718610-a1d656d1884c?auto=format&fit=crop&w=2000&q=80"
+      alt="Flusshaus Atmosphere"
+      class="image-container__image hero-background"
+    />
+  </div>
+  <div class="container hero-content text-center">
+    <h1 class="text-3xl hero-heading">NOMAD LIVING</h1>
+    <p class="text-xl mt-md hero-subheading">Flusshaus - Ihr Zuhause im Spreewald</p>
   </div>
 </section>
 
+<style>
+  @import '../styles/_tokens.css';
+  @import '../styles/hero.css';
+</style>

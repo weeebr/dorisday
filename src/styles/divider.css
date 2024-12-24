@@ -1,0 +1,25 @@
+.divider {
+  width: 120px;
+  height: 1px;
+  background: var(--color-primary);
+  margin: var(--spacing-md) auto;
+  opacity: 0.5;
+}
+
+.divider--small {
+  width: 60px;
+}
+
+.divider--large {
+  width: 180px;
+}
+
+.divider--dark {
+  background: var(--color-primary-dark);
+  opacity: 0.7;
+}
+
+.divider--light {
+  background: var(--color-primary-light);
+  opacity: 0.3;
+}

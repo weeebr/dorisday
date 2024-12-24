@@ -1,0 +1,176 @@
+---
+/* -*- coding: utf-8 -*- */
+---
+
+<section id="contact" class="section contact-section">
+  <div class="container">
+    <div class="text-center mb-lg">
+      <img src="/logo-icon.svg" alt="" class="contact-logo mb-md" />
+      <h2 class="text-2xl contact-heading">KONTAKTIERE UNS!</h2>
+      <div class="divider divider--short divider--fade mb-lg"></div>
+      <p class="text-lg contact-text mb-lg">
+        Wir sind gespannt und unterstützen Sie bei der richtigen Entscheidung für Ihren Urlaub.
+        Schreiben Sie uns oder rufen Sie uns an.
+      </p>
+    </div>
+    <div class="contact-content">
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="grid grid-2 mb-md">
+          <div class="form-group">
+            <label for="name" class="form-label">Name <span class="required">*</span></label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="input"
+              required
+              minlength="2"
+              aria-required="true"
+              aria-describedby="nameError"
+            />
+            <div id="nameError" class="error-message" aria-live="polite"></div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-label">E-Mail <span class="required">*</span></label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="input"
+              required
+              aria-required="true"
+              aria-describedby="emailError"
+            />
+            <div id="emailError" class="error-message" aria-live="polite"></div>
+          </div>
+          <div class="form-group">
+            <label for="phone" class="form-label">Telefon</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="input"
+              pattern="[0-9\s\-\+]+"
+              aria-describedby="phoneError"
+            />
+            <div id="phoneError" class="error-message" aria-live="polite"></div>
+          </div>
+          <div class="form-group">
+            <label for="subject" class="form-label">Betreff</label>
+            <input type="text" id="subject" name="subject" class="input" />
+          </div>
+        </div>
+        <div class="form-group mb-lg">
+          <label for="message" class="form-label"
+            >Ihre Nachricht <span class="required">*</span></label
+          >
+          <textarea
+            id="message"
+            name="message"
+            class="input input--large"
+            rows="5"
+            required
+            aria-required="true"
+            aria-describedby="messageError"></textarea>
+          <div id="messageError" class="error-message" aria-live="polite"></div>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="button" id="submitButton">
+            <span class="button__text">Senden</span>
+            <span class="button__loader" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div id="formStatus" class="form-status mt-md" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  @import '../styles/_tokens.css';
+  @import '../styles/contact.css';
+</style>
+
+<script>
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  const submitButton = document.getElementById('submitButton') as HTMLButtonElement;
+  const formStatus = document.getElementById('formStatus') as HTMLDivElement;
+
+  if (form) {
+    // Show validation messages on input
+    const inputs = form.querySelectorAll('input, textarea');
+    inputs.forEach((input) => {
+      input.addEventListener('invalid', (event) => {
+        event.preventDefault();
+        showError(input as HTMLInputElement);
+      });
+
+      input.addEventListener('input', () => {
+        clearError(input as HTMLInputElement);
+      });
+    });
+
+    // Handle form submission
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      try {
+        setLoading(true);
+
+        // Simulate API call
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
+        // Success
+        showStatus('Vielen Dank für Ihre Nachricht! Wir melden uns in Kürze bei Ihnen.', 'success');
+        form.reset();
+      } catch (error) {
+        showStatus('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.', 'error');
+      } finally {
+        setLoading(false);
+      }
+    });
+  }
+
+  function showError(input: HTMLInputElement) {
+    const errorElement = document.getElementById(`${input.id}Error`);
+    if (errorElement) {
+      if (input.validity.valueMissing) {
+        errorElement.textContent = 'Dieses Feld ist erforderlich.';
+      } else if (input.validity.typeMismatch && input.type === 'email') {
+        errorElement.textContent = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
+      } else if (input.validity.patternMismatch && input.type === 'tel') {
+        errorElement.textContent = 'Bitte geben Sie eine gültige Telefonnummer ein.';
+      } else if (input.validity.tooShort) {
+        errorElement.textContent = `Mindestens ${input.minLength} Zeichen erforderlich.`;
+      }
+      input.setAttribute('aria-invalid', 'true');
+    }
+  }
+
+  function clearError(input: HTMLInputElement) {
+    const errorElement = document.getElementById(`${input.id}Error`);
+    if (errorElement) {
+      errorElement.textContent = '';
+      input.removeAttribute('aria-invalid');
+    }
+  }
+
+  function setLoading(isLoading: boolean) {
+    submitButton.disabled = isLoading;
+    submitButton.classList.toggle('button--loading', isLoading);
+  }
+
+  function showStatus(message: string, type: 'success' | 'error') {
+    formStatus.textContent = message;
+    formStatus.className = `form-status mt-md form-status--${type}`;
+    setTimeout(() => {
+      formStatus.textContent = '';
+      formStatus.className = 'form-status mt-md';
+    }, 5000);
+  }
+</script>
