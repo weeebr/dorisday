@@ -106,7 +106,7 @@ const menuItems = [
       position: fixed;
       inset: 0;
       height: 100vh;
-      width: 42vw;
+      width: 100vw;
       background: rgba(0, 0, 0, 0.2);
       opacity: 0;
       visibility: hidden;
@@ -124,7 +124,7 @@ const menuItems = [
       top: 0;
       right: 0;
       bottom: 0;
-      width: min(400px, 100vw);
+      width: min(350px, 100vw);
       height: var(--header-height, 80px);
       background: var(--color-surface-base);
       opacity: 0;
@@ -267,8 +267,8 @@ const menuItems = [
     :global(body.menu-open header .logo) {
       position: fixed;
       z-index: 1001;
-      right: 151px;
-      top: 130px;
+      right: 127px;
+      top: 114px;
       transition:
         transform 0.5s var(--ease-out-circ),
         opacity 0.3s var(--ease-out-circ);
