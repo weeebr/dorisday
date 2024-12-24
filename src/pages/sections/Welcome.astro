@@ -2,18 +2,50 @@
 import Button from '../../components/Button.astro';
 ---
 
-<section id="welcome" class="welcome">
-  <div class="container text-center">
-    <h2>Doris Day</h2>
-    <p>
-      Willkommen in unserer Boutique, wo zeitlose Eleganz auf moderne Trends trifft. Wir bieten
-      sorgfältig kuratierte Mode und Accessoires für Frauen, die Wert auf Qualität und individuellen
-      Stil legen.
-    </p>
-    <Button href="#collection" variant="secondary">Aktuelle Kollektion</Button>
+<section class="welcome-outer">
+  <div class="welcome-inner">
+    <div class="welcome-content">
+      <h2>Doris Day</h2>
+      <p class="section-intro">
+        Willkommen in unserer Boutique, wo zeitlose Eleganz auf moderne Trends trifft. Wir bieten
+        sorgfältig kuratierte Mode und Accessoires für Frauen, die Wert auf Qualität und
+        individuellen Stil legen.
+      </p>
+      <Button href="#collection" variant="secondary">Aktuelle Kollektion</Button>
+    </div>
   </div>
 </section>
 
 <style>
-  @import '../../styles/welcome.css';
+  .welcome-outer {
+    width: 100%;
+    padding: var(--space-layout-xl) 0;
+    background: var(--color-surface-base);
+  }
+
+  .welcome-inner {
+    width: min(100% - 4rem, var(--size-content-xl));
+    margin-inline: auto;
+  }
+
+  .welcome-content {
+    text-align: center;
+    max-width: 60ch;
+    margin-inline: auto;
+  }
+
+  h2 {
+    font-size: var(--font-size-2xl);
+    letter-spacing: var(--letter-spacing-wider);
+    margin-bottom: var(--space-component-md);
+    font-weight: var(--font-weight-light);
+  }
+
+  .section-intro {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-base);
+    letter-spacing: var(--letter-spacing-wide);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-layout-lg);
+  }
 </style>
