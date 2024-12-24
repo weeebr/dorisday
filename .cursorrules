@@ -1,0 +1,20 @@
+rules:
+  - request: "Build a modern, readable website for an older audience"
+    instructions: |
+      - Use large, clear fonts and high-contrast colors for readability.
+      - Ensure that all text is legible on both desktop and mobile devices.
+      - Use intuitive navigation and layout suitable for women aged 30-60.
+  - request: "Create a dummy-proof admin panel"
+    instructions: |
+      - Design the admin panel with simplicity and ease of use in mind, avoid clutter.
+      - Include tooltips and help documentation for common functionalities.
+      - Implement role-based authentication for secure access.
+  - request: "Optimize website performance for fast deployment"
+    instructions: |
+      - Optimize images using formats like WebP and lazy loading techniques.
+      - Implement code splitting and minimize client-side JavaScript to enhance loading speed.
+      - Ensure the site can be deployed on free hosting solutions like Netlify or Vercel with a custom domain.
+  - request: "Information delivery about products, events, promotions"
+    instructions: |
+      - Design a minimalistic, dummy-proof CMS (Content Management System) to easily update information about current products, events, and promotions.
+      - Incorporate dynamic sections for blogs or announcements to keep content lively and engaging.
