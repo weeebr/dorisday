@@ -1,32 +1,103 @@
-.contact {
-  padding-block: var(--space-layout-md);
-}
+/**
+ * Contact Section
+ * Elegant fashion aesthetic
+ */
 
-.contact-form {
-  max-width: var(--size-content-sm);
-  margin-inline: auto;
-}
-
-input,
-textarea {
+.contact-outer {
   width: 100%;
-  padding: var(--space-component-sm);
-  border: 1px solid var(--color-surface-muted);
-  border-radius: var(--radius-sm);
+  padding: var(--space-layout-xl) 0;
   background: var(--color-surface-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-outer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80')
+    center/cover;
+  opacity: 0.04;
+  z-index: 0;
+}
+
+.contact-inner {
+  width: min(100% - 4rem, var(--size-content-xl));
+  margin-inline: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-inner h2 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-layout-xl);
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--letter-spacing-widest);
+  text-align: center;
   color: var(--color-text-base);
-  font-size: var(--font-size-base);
 }
 
-input:focus,
-textarea:focus {
+.contact-inner form {
+  max-width: 600px;
+  margin-inline: auto;
+  background: var(--color-surface-alt);
+  padding: var(--space-layout-lg);
+  border: 1px solid var(--color-border-muted);
+}
+
+.form-group {
+  margin-bottom: var(--space-layout-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--space-component-xs);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--color-text-base);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: var(--space-component-md);
+  border: 1px solid var(--color-border-muted);
+  background: transparent;
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-base);
+  transition: all var(--transition-normal);
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
   outline: none;
-  border-color: var(--color-primary-base);
-  box-shadow: 0 0 0 2px var(--color-primary-light);
+  border-color: var(--color-text-base);
+  background: rgba(255, 255, 255, 0.5);
 }
 
-@media (max-width: 768px) {
-  .contact {
-    padding-block: var(--space-layout-sm);
-  }
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+.contact-inner .button {
+  width: 100%;
+  margin-top: var(--space-layout-sm);
+  background: transparent;
+  color: var(--color-text-base);
+  border: 1px solid currentColor;
+  letter-spacing: var(--letter-spacing-wider);
+  transition: all var(--transition-normal);
+}
+
+.contact-inner .button:hover {
+  background: var(--color-text-base);
+  color: var(--color-surface-base);
 }

@@ -1,15 +1,23 @@
 ---
 interface Props {
-  items: Array<{
+  items?: Array<{
     href: string;
     text: string;
   }>;
 }
 
-const { items } = Astro.props;
+const {
+  items = [
+    { href: '/willkommen', text: 'WILLKOMMEN' },
+    { href: '/bed-being', text: 'BED & BEING' },
+    { href: '/nomad-cafe', text: 'NOMAD CAFÉ' },
+    { href: '/kultur', text: 'KULTUR' },
+    { href: '/kontakt', text: 'KONTAKT' },
+  ],
+} = Astro.props;
 ---
 
-<nav class="nav">
+<nav class="nav" aria-label="Hauptnavigation">
   <ul>
     {
       items.map((item) => (

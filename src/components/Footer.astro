@@ -1,35 +1,51 @@
 ---
 import Logo from './Logo.astro';
-
-interface Props {
-  links?: Array<{
-    href: string;
-    text: string;
-  }>;
-}
-
-const {
-  links = [
-    { href: '/impressum', text: 'Impressum' },
-    { href: '/datenschutz', text: 'Datenschutz' },
-    { href: '/agb', text: 'AGB' },
-  ],
-} = Astro.props;
 ---
 
-<footer class="footer">
-  <div class="container">
+<div class="footer-outer">
+  <div class="footer-inner">
     <div class="footer-content">
-      <div class="footer-logo">
-        <Logo size="medium" />
+      <div class="footer-branding">
+        <Logo />
+        <p class="footer-tagline">Zeitlose Mode & Eleganz in Aarau</p>
       </div>
-      <div class="footer-links">
-        {links.map((link) => <a href={link.href}>{link.text}</a>)}
+
+      <div class="footer-sections">
+        <div class="footer-section">
+          <h3>Öffnungszeiten</h3>
+          <p>Mo - Fr: 10:00 - 18:30</p>
+          <p>Sa: 10:00 - 16:00</p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Kontakt</h3>
+          <p>Laurenzenvorstadt 90</p>
+          <p>5000 Aarau</p>
+          <p>+41 62 000 00 00</p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Folgen Sie uns</h3>
+          <div class="footer-social">
+            <a href="#" class="footer-link">Instagram</a>
+            <a href="#" class="footer-link">Facebook</a>
+          </div>
+        </div>
       </div>
-      <p class="text-sm">&copy; {new Date().getFullYear()} Flusshaus. All rights reserved.</p>
+
+      <div class="footer-bottom">
+        <nav class="footer-nav">
+          <a href="/datenschutz" class="footer-link">Datenschutz</a>
+          <span class="footer-divider">·</span>
+          <a href="/impressum" class="footer-link">Impressum</a>
+          <span class="footer-divider">·</span>
+          <a href="/agb" class="footer-link">AGB</a>
+        </nav>
+        <p class="copyright">© 2024 Doris Day. Alle Rechte vorbehalten.</p>
+      </div>
     </div>
   </div>
-</footer>
+</div>
 
 <style>
   @import '../styles/footer.css';

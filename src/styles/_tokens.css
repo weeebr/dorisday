@@ -1,84 +1,88 @@
 /**
  * Design Tokens
- * Optimized for readability and accessibility
+ * Optimized for visual rhythm and harmony
  */
 
 :root {
-  /* Colors - Using a warmer, more readable palette */
-  --color-primary-light: #d4c5b9;
-  --color-primary-base: #b8a898;
-  --color-primary-dark: #8c7b6a;
+  /* Colors - Refined for visual harmony */
+  --color-primary-base: #9b8579; /* Warm taupe */
+  --color-primary-dark: #7a6557; /* Deep taupe */
+  --color-primary-light: #d5c3b6; /* Light taupe */
 
-  --color-text-base: #2c2c2c; /* Slightly softer than pure black */
-  --color-text-muted: #595959; /* Accessible muted text */
-  --color-text-inverted: #ffffff;
+  --color-surface-base: #ffffff; /* Pure white */
+  --color-surface-muted: #f9f7f5; /* Warmer white */
+  --color-surface-alt: #f4f1ee; /* Light beige */
 
-  --color-surface-base: #ffffff;
-  --color-surface-alt: #f7f5f3; /* Warm light background */
-  --color-surface-muted: #e8e2dc;
+  --color-text-base: #2c2420; /* Soft black */
+  --color-text-muted: #6b5e57; /* Warm gray */
+  --color-text-light: #9b8579; /* Light warm gray */
 
-  /* Typography - Optimized for readability */
+  /* Typography - Refined for fashion boutique */
   --font-family-heading: 'Cormorant Garamond', serif;
-  --font-family-body: 'Montserrat', sans-serif;
+  --font-family-body: 'Quattrocento Sans', sans-serif;
 
-  /* Base size 16px -> 18px for better readability */
-  --font-size-base: 1.125rem;
-  --font-size-sm: 0.9rem; /* 16.2px */
-  --font-size-lg: 1.25rem; /* 22.5px */
-  --font-size-xl: 1.5rem; /* 27px */
-  --font-size-2xl: 2rem; /* 36px */
-  --font-size-3xl: 2.5rem; /* 45px */
+  /* Font Sizes - Optimized for readability */
+  --font-size-xs: 0.875rem; /* 14px - Minimum size for good readability */
+  --font-size-sm: 1rem; /* 16px - Base size for secondary text */
+  --font-size-base: 1.125rem; /* 18px - Comfortable reading size for main content */
+  --font-size-lg: 1.25rem; /* 20px - Emphasized body text */
+  --font-size-xl: 1.5rem; /* 24px - Small headings */
+  --font-size-2xl: 2.25rem; /* 36px - Section headings */
+  --font-size-3xl: 3rem; /* 48px - Major headings */
+  --font-size-4xl: 3.75rem; /* 60px - Hero headlines */
 
-  /* Increased line heights for better readability */
-  --line-height-tight: 1.2;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.75;
+  /* Font Weights - Elegant but readable */
+  --font-weight-thin: 300; /* Light weight for large headings */
+  --font-weight-light: 300; /* Light weight for headings */
+  --font-weight-normal: 400; /* Regular weight for body text */
+  --font-weight-medium: 500; /* Medium weight for emphasis */
 
-  /* Enhanced letter spacing */
-  --letter-spacing-tight: -0.015em;
+  /* Line Heights - Enhanced readability */
+  --line-height-tight: 1.2; /* Headings */
+  --line-height-normal: 1.6; /* General text - Increased for better readability */
+  --line-height-relaxed: 1.8; /* Body text - More generous for longer content */
+  --line-height-loose: 2; /* Large text */
+
+  /* Letter Spacing - Fashion-forward but legible */
+  --letter-spacing-tight: -0.01em;
   --letter-spacing-normal: 0;
-  --letter-spacing-wide: 0.015em;
-  --letter-spacing-wider: 0.05em;
+  --letter-spacing-wide: 0.03em; /* Subtle expansion for elegance */
+  --letter-spacing-wider: 0.05em; /* Fashion headlines */
+  --letter-spacing-widest: 0.1em; /* Brand statements */
 
-  /* Font Weights */
-  --font-weight-light: 300;
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
+  /* Spacing - 8-point grid */
+  --space-component-xs: 0.5rem; /* 8px */
+  --space-component-sm: 1rem; /* 16px */
+  --space-component-md: 1.5rem; /* 24px */
+  --space-component-lg: 2rem; /* 32px */
+  --space-component-xl: 3rem; /* 48px */
 
-  /* Spacing - More generous for better readability */
-  --space-component-xs: 0.5rem; /* 9px */
-  --space-component-sm: 1rem; /* 18px */
-  --space-component-md: 1.5rem; /* 27px */
-  --space-component-lg: 2rem; /* 36px */
-  --space-component-xl: 3rem; /* 54px */
+  --space-layout-xs: 3rem; /* 48px */
+  --space-layout-sm: 4rem; /* 64px */
+  --space-layout-md: 6rem; /* 96px */
+  --space-layout-lg: 8rem; /* 128px */
+  --space-layout-xl: 12rem; /* 192px */
 
-  --space-layout-xs: 2rem; /* 36px */
-  --space-layout-sm: 3rem; /* 54px */
-  --space-layout-md: 4.5rem; /* 81px */
-  --space-layout-lg: 6rem; /* 108px */
-  --space-layout-xl: 9rem; /* 162px */
+  /* Sizes - Based on header width */
+  --size-content-sm: 640px; /* Narrow content like forms */
+  --size-content-md: 768px; /* Default content width */
+  --size-content-lg: 1024px; /* Wider content */
+  --size-content-xl: 1280px; /* Main container width - matches header */
+  --size-content-2xl: 1440px; /* Full width content */
 
-  /* Content Widths - Optimized for readability */
-  --size-content-xs: 20rem; /* 360px */
-  --size-content-sm: 30rem; /* 540px */
-  --size-content-md: 40rem; /* 720px */
-  --size-content-lg: 50rem; /* 900px */
-  --size-content-xl: 60rem; /* 1080px */
+  /* Other */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
 
-  /* Border Radius - Slightly softer edges */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 1rem;
-
-  /* Transitions - Slightly slower for better visibility */
-  --transition-slow: 0.3s ease-in-out;
-  --transition-normal: 0.2s ease-in-out;
-  --transition-fast: 0.1s ease-in-out;
+  --transition-quick: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
 
   /* Z-index */
   --z-below: -1;
-  --z-base: 0;
-  --z-above: 1;
+  --z-normal: 1;
+  --z-above: 10;
   --z-header: 100;
-  --z-modal: 1000;
+  --z-overlay: 1000;
 }

@@ -1,6 +1,6 @@
 /**
  * Base Styles
- * Optimized for readability and accessibility
+ * Optimized for visual rhythm and harmony
  */
 
 /* Reset */
@@ -12,162 +12,288 @@
   padding: 0;
 }
 
+/* Typography Scale - More refined for fashion */
+:root {
+  --font-size-xs: clamp(1.125rem, 1rem + 0.25vw, 1.25rem);
+  --font-size-sm: clamp(1.25rem, 1.15rem + 0.25vw, 1.5rem);
+  --font-size-base: clamp(1.5rem, 1.25rem + 0.25vw, 1.75rem);
+  --font-size-lg: clamp(1.75rem, 1.5rem + 0.25vw, 2rem);
+  --font-size-xl: clamp(2rem, 1.75rem + 0.5vw, 2.5rem);
+  --font-size-2xl: clamp(2.5rem, 2rem + 1vw, 3rem);
+  --font-size-3xl: clamp(3rem, 2.5rem + 1.5vw, 3.5rem);
+  --font-size-4xl: clamp(3.5rem, 3rem + 2vw, 4.5rem);
+
+  /* Refined spacing for fashion layout */
+  --space-component-xs: clamp(0.5rem, 0.4rem + 0.25vw, 0.75rem);
+  --space-component-sm: clamp(0.75rem, 0.6rem + 0.25vw, 1rem);
+  --space-component-md: clamp(1rem, 0.8rem + 0.5vw, 1.5rem);
+  --space-component-lg: clamp(1.5rem, 1.2rem + 0.75vw, 2rem);
+  --space-component-xl: clamp(2rem, 1.6rem + 1vw, 3rem);
+
+  --space-layout-xs: clamp(1.5rem, 1.2rem + 0.75vw, 2rem);
+  --space-layout-sm: clamp(2rem, 1.6rem + 1vw, 3rem);
+  --space-layout-md: clamp(3rem, 2.4rem + 1.5vw, 4rem);
+  --space-layout-lg: clamp(4rem, 3.2rem + 2vw, 6rem);
+  --space-layout-xl: clamp(6rem, 4.8rem + 3vw, 8rem);
+
+  /* Refined colors */
+  --color-text-base: #1a1a1a;
+  --color-text-muted: #666666;
+  --color-surface-base: #faf9f8;
+  --color-surface-muted: #f5f4f2;
+  --color-surface-alt: #ffffff;
+  --color-border-muted: #e6e6e6;
+
+  /* Typography */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.05em;
+  --letter-spacing-wider: 0.1em;
+  --letter-spacing-widest: 0.2em;
+
+  /* Line heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+}
+
 /* Base Elements */
 html {
   scroll-behavior: smooth;
-  font-size: 100%; /* Respect user's browser settings */
-  -webkit-text-size-adjust: 100%; /* Prevent iOS font scaling */
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   font-family: var(--font-family-body);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-xs);
   line-height: var(--line-height-relaxed);
   color: var(--color-text-base);
   background: var(--color-surface-base);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Typography Scale */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-wide);
+  margin-bottom: var(--space-component-xl);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+}
+h2 {
+  font-size: var(--font-size-3xl);
+}
+h3 {
+  font-size: var(--font-size-2xl);
+}
+h4 {
+  font-size: var(--font-size-xl);
+}
+h5 {
+  font-size: var(--font-size-lg);
+}
+
+p {
+  margin-bottom: var(--space-component-lg);
+  max-width: 70ch;
 }
 
 /* Links */
 a {
   color: inherit;
   text-decoration: none;
-  transition: color var(--transition-normal);
+  transition: all var(--transition-normal);
 }
 
 a:hover {
-  color: var(--color-primary-base);
+  color: var(--color-text-base);
 }
 
-a:focus {
-  outline: 2px solid var(--color-primary-base);
+a:focus-visible {
+  outline: 2px solid var(--color-text-base);
   outline-offset: 2px;
-}
-
-/* Images */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
 }
 
 /* Layout Utilities */
 .container {
-  width: min(100% - 8rem, var(--size-content-xl));
+  width: min(100% - 4rem, var(--size-content-xl));
   margin-inline: auto;
-  padding-inline: clamp(var(--space-component-lg), 4vw, var(--space-layout-md));
 }
 
+/* Inner Content Constraints */
+.container__content {
+  width: 100%;
+  margin-inline: auto;
+}
+
+.container__content--narrow {
+  max-width: var(--size-content-md);
+}
+
+.container__content--medium {
+  max-width: var(--size-content-lg);
+}
+
+/* Section Layouts */
+.section {
+  width: 100%;
+  padding: var(--space-layout-xl) 0;
+}
+
+.section--light {
+  background-color: var(--color-surface-base);
+}
+
+.section--muted {
+  background-color: var(--color-surface-muted);
+}
+
+.section--alt {
+  background-color: var(--color-surface-alt);
+}
+
+.section + .section {
+  padding-top: 0;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  gap: var(--space-layout-md);
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Horizontal Rhythm */
+.rhythm {
+  display: flex;
+  gap: var(--space-component-xl);
+}
+
+.rhythm-sm {
+  gap: var(--space-component-md);
+}
+
+.rhythm-lg {
+  gap: var(--space-layout-sm);
+}
+
+/* Text Utilities */
 .text-center {
   text-align: center;
 }
 
-/* Typography */
-.text-3xl {
-  font-family: var(--font-family-heading);
-  font-size: clamp(var(--font-size-xl), 5vw, var(--font-size-3xl));
-  font-weight: var(--font-weight-light);
-  line-height: var(--line-height-tight);
-  letter-spacing: var(--letter-spacing-wide);
+.text-balance {
+  text-wrap: balance;
 }
 
-.text-2xl {
-  font-family: var(--font-family-heading);
-  font-size: clamp(var(--font-size-lg), 4vw, var(--font-size-2xl));
-  font-weight: var(--font-weight-light);
-  line-height: var(--line-height-tight);
-  letter-spacing: var(--letter-spacing-wide);
-}
-
-.text-xl {
-  font-size: clamp(var(--font-size-base), 3vw, var(--font-size-xl));
-  line-height: var(--line-height-relaxed);
-  letter-spacing: var(--letter-spacing-wide);
-}
-
-.text-lg {
-  font-size: clamp(var(--font-size-base), 2.5vw, var(--font-size-lg));
-  line-height: var(--line-height-relaxed);
-}
-
-.text-sm {
-  font-size: var(--font-size-sm);
-  line-height: var(--line-height-normal);
-}
-
-/* Spacing */
-.section {
-  padding-block: clamp(var(--space-layout-lg), 15vh, var(--space-layout-xl));
-  margin-inline: auto;
-  width: 100%;
-}
-
-.mb-xs {
-  margin-bottom: var(--space-component-xs);
-}
-.mb-sm {
-  margin-bottom: var(--space-component-sm);
-}
-.mb-md {
-  margin-bottom: var(--space-component-md);
-}
-.mb-lg {
-  margin-bottom: var(--space-component-lg);
-}
-.mb-xl {
-  margin-bottom: var(--space-component-xl);
-}
-
-.mt-xs {
-  margin-top: var(--space-component-xs);
-}
-.mt-sm {
-  margin-top: var(--space-component-sm);
-}
-.mt-md {
+/* Spacing Utilities */
+.space-y > * + * {
   margin-top: var(--space-component-md);
 }
-.mt-lg {
+
+.space-y-lg > * + * {
   margin-top: var(--space-component-lg);
 }
-.mt-xl {
-  margin-top: var(--space-component-xl);
-}
 
-/* Focus Management */
-:focus-visible {
-  outline: 2px solid var(--color-primary-base);
-  outline-offset: 2px;
-}
-
-/* Mobile Menu State */
-@media (max-width: 768px) {
-  body.menu-open {
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    height: 100%;
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .container {
+    width: min(100% - var(--space-layout-md), 100%);
+    padding-inline: var(--space-component-xl);
   }
-}
 
-/* Grid Utilities */
-.grid {
-  display: grid;
-  gap: clamp(var(--space-layout-sm), 4vw, var(--space-layout-md));
-  margin-inline: auto;
-  width: 100%;
-}
-
-.grid-2 {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr));
-}
-
-.grid-3 {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+  .grid-cols-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
   .container {
-    width: min(100% - 3rem, var(--size-content-xl));
+    width: min(100% - var(--space-layout-sm), 100%);
+    padding-inline: var(--space-component-lg);
   }
+
+  .grid-cols-2,
+  .grid-cols-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .rhythm {
+    flex-direction: column;
+    gap: var(--space-component-lg);
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    color: black;
+    background: white;
+  }
+
+  .container {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* Content Width Variants */
+.container--narrow {
+  max-width: var(--size-content-md);
+}
+
+.container--wide {
+  max-width: var(--size-content-2xl);
+}
+
+/* Content Alignment */
+.container--center {
+  text-align: center;
+}
+
+/* Content Alignment */
+.content--center {
+  text-align: center;
+}
+
+/* Section Layout System */
+.section-wrapper {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding-left: calc(50vw - 50%);
+  padding-right: calc(50vw - 50%);
+  background: inherit;
+}
+
+.section-wrapper--light {
+  background-color: var(--color-surface-base);
+}
+
+.section-wrapper--muted {
+  background-color: var(--color-surface-muted);
+}
+
+.section-wrapper--alt {
+  background-color: var(--color-surface-alt);
 }

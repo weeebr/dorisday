@@ -1,58 +1,48 @@
 /**
  * Button Component
- * Optimized for accessibility and touch
+ * Minimal and elegant design
  */
 
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 3rem; /* Minimum touch target */
-  padding: var(--space-component-sm) var(--space-component-xl);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: var(--letter-spacing-wide);
+  padding: 1rem 3rem;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-thin);
+  letter-spacing: var(--letter-spacing-widest);
   text-transform: uppercase;
-  border-radius: var(--radius-sm);
+  border: 1px solid currentColor;
+  background: transparent;
+  color: var(--color-text-base);
   transition: all var(--transition-normal);
   cursor: pointer;
   text-decoration: none;
-  border: none;
-  /* Ensure sufficient contrast */
-  background: var(--color-primary-base);
-  color: var(--color-surface-base);
+  min-width: 200px;
 }
 
 .button:hover {
-  background: var(--color-primary-dark);
-  transform: translateY(-1px);
-}
-
-.button:active {
-  transform: translateY(0);
+  background: var(--color-text-base);
+  color: var(--color-surface-base);
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--color-primary-dark);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--color-surface-base),
+    0 0 0 3px var(--color-text-base);
 }
 
 /* Secondary variant */
 .button--secondary {
-  background: transparent;
-  color: var(--color-primary-base);
-  box-shadow: inset 0 0 0 2px currentColor;
-}
-
-.button--secondary:hover {
-  background: var(--color-primary-base);
-  color: var(--color-surface-base);
+  border-width: 1px;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .button {
-    width: 100%; /* Full width on mobile */
-    padding: var(--space-component-md) var(--space-component-lg);
+    padding: 0.875rem 2.5rem;
+    font-size: var(--font-size-xs);
+    min-width: 180px;
   }
 }

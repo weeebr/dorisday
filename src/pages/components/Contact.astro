@@ -2,37 +2,26 @@
 import Button from '../../components/Button.astro';
 ---
 
-<section id="contact" class="contact section-alt">
-  <div class="container text-center">
-    <h2 class="text-2xl mb-md">KONTAKTIERE UNS!</h2>
-    <div class="divider divider--short divider--fade mb-lg"></div>
-
-    <form class="contact-form" action="#" method="POST">
+<div class="contact-outer">
+  <div class="contact-inner">
+    <h2>KONTAKTIERE UNS</h2>
+    <form>
       <div class="form-group">
-        <label class="form-label" for="name">
-          Name <span class="required">*</span>
-        </label>
-        <input type="text" id="name" name="name" required />
+        <label>NAME *</label>
+        <input type="text" name="name" placeholder="Ihr Name" required />
       </div>
-
       <div class="form-group">
-        <label class="form-label" for="email">
-          Email <span class="required">*</span>
-        </label>
-        <input type="email" id="email" name="email" required />
+        <label>EMAIL *</label>
+        <input type="email" name="email" placeholder="Ihre Email-Adresse" required />
       </div>
-
       <div class="form-group">
-        <label class="form-label" for="message">
-          Nachricht <span class="required">*</span>
-        </label>
-        <textarea id="message" name="message" rows="4" required></textarea>
+        <label>NACHRICHT *</label>
+        <textarea name="message" placeholder="Ihre Nachricht" required></textarea>
       </div>
-
-      <Button type="submit">Senden</Button>
+      <Button type="submit" variant="secondary">SENDEN</Button>
     </form>
   </div>
-</section>
+</div>
 
 <style>
   @import '../../styles/contact.css';
