@@ -6,7 +6,7 @@ import Logo from './Logo.astro';
   <div class="footer-inner">
     <div class="footer-content">
       <div class="footer-branding">
-        <Logo />
+        <Logo size="large" />
         <p class="footer-tagline">Zeitlose Mode & Eleganz in Aarau</p>
       </div>
 
@@ -24,11 +24,37 @@ import Logo from './Logo.astro';
           <p>+41 62 000 00 00</p>
         </div>
 
-        <div class="footer-section">
-          <h3>Folgen Sie uns</h3>
+        <div class="footer-section footer-section--social">
+          <h3>Social Media</h3>
           <div class="footer-social">
-            <a href="#" class="footer-link">Instagram</a>
-            <a href="#" class="footer-link">Facebook</a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" stroke-width="1.5"></rect>
+                <circle cx="12" cy="12" r="4.5" stroke-width="1.5"></circle>
+                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"></circle>
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path
+                  d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z"
+                  stroke-width="1.5"></path>
+              </svg>
+            </a>
           </div>
         </div>
       </div>

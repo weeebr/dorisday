@@ -1,0 +1,169 @@
+---
+import Button from '../../components/Button.astro';
+
+const events = [
+  {
+    date: '15. Januar 2024',
+    title: 'Modelesung mit Sarah Weber',
+    description: 'Ein Abend über nachhaltige Mode und bewusstes Konsumieren.',
+  },
+  {
+    date: '22. Januar 2024',
+    title: 'Kunstausstellung: Textilien in der modernen Kunst',
+    description: 'Lokale Künstler präsentieren ihre Werke zum Thema Mode und Textilien.',
+  },
+  {
+    date: '29. Januar 2024',
+    title: 'Jazz & Fashion Night',
+    description: 'Entspannter Abend mit Live-Jazz und Preview der neuen Kollektion.',
+  },
+];
+---
+
+<section class="kultur-outer">
+  <div class="kultur-inner">
+    <h2>Kultur & Events</h2>
+    <p class="section-intro">
+      Mehr als Mode: Erleben Sie inspirierende Veranstaltungen in unserem Haus. Von Lesungen über
+      Ausstellungen bis hin zu Musikabenden – ein Ort der Begegnung und des Austauschs.
+    </p>
+
+    <div class="events-grid">
+      {
+        events.map((event) => (
+          <div class="event-card">
+            <div class="event-date">{event.date}</div>
+            <div class="event-content">
+              <h3>{event.title}</h3>
+              <p>{event.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="kultur-image">
+      <img
+        src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&q=80"
+        alt="Kulturelle Veranstaltung im Doris Day"
+      />
+    </div>
+
+    <div class="kultur-cta">
+      <Button href="/kultur" variant="secondary">Alle Veranstaltungen</Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .kultur-outer {
+    width: 100%;
+    padding: var(--space-layout-xl) 0;
+    background: var(--color-surface-muted);
+  }
+
+  .kultur-inner {
+    width: min(100% - 4rem, var(--size-content-xl));
+    margin-inline: auto;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: var(--font-size-2xl);
+    letter-spacing: var(--letter-spacing-wider);
+    margin-bottom: var(--space-component-md);
+    font-weight: var(--font-weight-light);
+  }
+
+  .section-intro {
+    text-align: center;
+    max-width: 60ch;
+    margin-inline: auto;
+    margin-bottom: var(--space-layout-lg);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-base);
+    letter-spacing: var(--letter-spacing-wide);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .events-grid {
+    display: grid;
+    gap: var(--space-layout-md);
+    margin-bottom: var(--space-layout-xl);
+  }
+
+  .event-card {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: var(--space-layout-md);
+    padding: var(--space-layout-md);
+    background: var(--color-surface-base);
+    align-items: center;
+  }
+
+  .event-date {
+    font-size: var(--font-size-lg);
+    letter-spacing: var(--letter-spacing-wide);
+    color: var(--color-text-base);
+    font-weight: var(--font-weight-light);
+    text-align: center;
+    border-right: 1px solid var(--color-border-muted);
+    padding-right: var(--space-layout-md);
+  }
+
+  .event-content h3 {
+    font-size: var(--font-size-lg);
+    letter-spacing: var(--letter-spacing-wide);
+    margin-bottom: var(--space-component-sm);
+    font-weight: var(--font-weight-light);
+    color: var(--color-text-base);
+  }
+
+  .event-content p {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    letter-spacing: var(--letter-spacing-wide);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .kultur-image {
+    margin-bottom: var(--space-layout-xl);
+    aspect-ratio: 21/9;
+    overflow: hidden;
+  }
+
+  .kultur-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+  }
+
+  .kultur-image:hover img {
+    transform: scale(1.05);
+  }
+
+  .kultur-cta {
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .event-card {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: var(--space-component-lg);
+    }
+
+    .event-date {
+      border-right: none;
+      border-bottom: 1px solid var(--color-border-muted);
+      padding-right: 0;
+      padding-bottom: var(--space-component-lg);
+    }
+
+    .kultur-image {
+      aspect-ratio: 3/2;
+    }
+  }
+</style>
+

@@ -5,19 +5,22 @@ import Button from '../../components/Button.astro';
 <section class="hero">
   <div class="image-container">
     <img
-      src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=2400&q=80"
+      src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80"
       alt="Elegant fashion display in natural light"
       class="image-container__image"
     />
-    <div class="image-overlay"></div>
   </div>
-  <div class="container">
-    <h1>Doris Day</h1>
-    <p>Zeitlose Mode & Eleganz in Aarau</p>
-    <Button href="#collection" variant="secondary">Neue Kollektion</Button>
+  <div class="content-wrapper">
+    <div class="container">
+      <div class="container__content container__content--narrow content--center">
+        <h1>Doris Day</h1>
+        <p>Zeitlose Mode & Eleganz in Aarau</p>
+        <Button href="#collection" variant="secondary">Neue Kollektion</Button>
+      </div>
+    </div>
   </div>
 </section>
 
 <style>
-  @import '../styles/hero.css';
+  @import '../../styles/hero.css';
 </style>

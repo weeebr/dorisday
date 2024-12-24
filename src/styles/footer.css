@@ -31,16 +31,16 @@
 .footer-content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-layout-lg);
+  gap: var(--space-layout-xl);
 }
 
 .footer-branding {
   text-align: center;
-  margin-bottom: var(--space-layout-md);
+  margin-bottom: var(--space-layout-lg);
 }
 
 .footer-tagline {
-  margin-top: var(--space-component-md);
+  margin-top: var(--space-component-lg);
   color: var(--color-text-muted);
   font-size: var(--font-size-sm);
   letter-spacing: var(--letter-spacing-wide);
@@ -50,7 +50,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-layout-lg);
-  padding: var(--space-layout-lg) 0;
+  padding: var(--space-layout-xl) 0;
   border-top: 1px solid var(--color-border-muted);
   border-bottom: 1px solid var(--color-border-muted);
 }
@@ -58,20 +58,51 @@
 .footer-section h3 {
   font-size: var(--font-size-sm);
   letter-spacing: var(--letter-spacing-wider);
-  margin-bottom: var(--space-component-lg);
+  margin-bottom: var(--space-component-xl);
   color: var(--color-text-base);
 }
 
 .footer-section p {
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
-  margin-bottom: var(--space-component-sm);
+  margin-bottom: var(--space-component-md);
   letter-spacing: var(--letter-spacing-wide);
+  line-height: var(--line-height-relaxed);
+}
+
+.footer-section--social {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .footer-social {
   display: flex;
-  gap: var(--space-component-lg);
+  gap: var(--space-component-xl);
+  align-items: center;
+  margin-top: var(--space-component-lg);
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  transition: all var(--transition-normal);
+  padding: var(--space-component-sm);
+  border-radius: 50%;
+  background: transparent;
+}
+
+.social-icon:hover {
+  color: var(--color-text-base);
+  transform: translateY(-2px);
+}
+
+.social-icon svg {
+  width: 48px;
+  height: 48px;
+  stroke-width: 1.5;
 }
 
 .footer-bottom {
@@ -79,6 +110,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-component-xl);
+  padding-top: var(--space-layout-md);
 }
 
 .footer-nav {
@@ -143,7 +175,11 @@
   .footer-sections {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: var(--space-layout-md);
+    gap: var(--space-layout-lg);
+  }
+
+  .footer-section--social {
+    align-items: center;
   }
 
   .footer-social {
