@@ -10,7 +10,7 @@ const menuItems = [
   { href: '#bed-being', text: 'BED & BEING' },
   { href: '#nomad-cafe', text: 'NOMAD CAFÉ' },
   { href: '#kultur', text: 'KULTUR' },
-  { href: '#kontakt', text: 'KONTAKT' }
+  { href: '#kontakt', text: 'KONTAKT' },
 ];
 ---
 
@@ -21,13 +21,18 @@ const menuItems = [
     <span></span>
   </button>
 
+  <div class="mobile-backdrop"></div>
   <nav class="mobile-nav">
-    <ul>
-      {menuItems.map(item => (
-        <li>
-          <a href={item.href}>{item.text}</a>
-        </li>
-      ))}
+    <ul class="mobile-nav-items">
+      {
+        menuItems.map((item, index) => (
+          <li style={`--item-index: ${index};`}>
+            <a href={item.href} class="nav-link">
+              {item.text}
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </nav>
 </div>
@@ -61,13 +66,25 @@ const menuItems = [
       z-index: 1001;
     }
 
+    /* Enhanced click target */
+    .menu-toggle::before {
+      content: '';
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      bottom: -15px;
+      left: -15px;
+      cursor: pointer;
+    }
+
     .menu-toggle span {
       display: block;
       width: 100%;
       height: 1.5px;
       background: currentColor;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s var(--ease-out-circ);
       transform-origin: right center;
+      pointer-events: auto;
     }
 
     /* Hamburger animation */
@@ -84,6 +101,23 @@ const menuItems = [
       transform: translateY(2px) rotate(45deg);
     }
 
+    /* Backdrop */
+    .mobile-backdrop {
+      position: fixed;
+      inset: 0;
+      height: 100vh;
+      width: 42vw;
+      background: rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.5s var(--ease-out-circ),
+        visibility 0s linear 0.5s;
+      z-index: 999;
+      cursor: pointer;
+      pointer-events: none;
+    }
+
     /* Full screen menu */
     .mobile-nav {
       position: fixed;
@@ -91,18 +125,26 @@ const menuItems = [
       right: 0;
       bottom: 0;
       width: min(400px, 100vw);
-      background: var(--color-surface-alt);
+      height: var(--header-height, 80px);
+      background: var(--color-surface-base);
       opacity: 0;
       visibility: hidden;
-      transition: all 0.3s ease;
+      transition:
+        transform 0.5s var(--ease-out-circ),
+        height 0.5s var(--ease-out-circ),
+        opacity 0.5s var(--ease-out-circ),
+        visibility 0s linear 0.5s;
       z-index: 1000;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       transform: translateX(100%);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+      padding: var(--space-layout-xl) 0;
     }
 
-    .mobile-nav ul {
+    .mobile-nav-items {
       list-style: none;
       padding: 0;
       margin: 0;
@@ -113,22 +155,129 @@ const menuItems = [
       padding: 0 2rem;
     }
 
-    .mobile-nav a {
-      color: var(--color-text-base);
+    .mobile-nav-items li {
+      opacity: 0;
+      transform: translateY(20px);
+      transition:
+        transform 0.6s var(--ease-out-circ),
+        opacity 0.6s var(--ease-out-circ);
+      transition-delay: calc(0.15s + (var(--item-index, 0) * 0.05s));
+    }
+
+    .nav-link {
+      color: var(--color-text-muted);
       text-decoration: none;
       font-size: var(--font-size-lg);
-      padding: 0.5rem;
+      padding: var(--space-component-md);
       display: block;
       text-align: center;
       letter-spacing: var(--letter-spacing-widest);
       font-weight: var(--font-weight-light);
+      position: relative;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color var(--transition-normal);
+    }
+
+    li {
+      cursor: pointer;
+    }
+
+    .nav-link:hover {
+      color: var(--color-text-base);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      width: 0;
+      height: 1px;
+      background: currentColor;
+      transition: all var(--transition-bounce);
+      transform: translateX(-50%);
+    }
+
+    .nav-link:hover::after {
+      width: 2rem;
     }
 
     /* Show menu when active */
-    .menu-toggle.active + .mobile-nav {
+    .menu-toggle.active ~ .mobile-backdrop {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: none;
+      transition-delay: 0s;
+    }
+
+    .menu-toggle.active ~ .mobile-nav {
       opacity: 1;
       visibility: visible;
       transform: translateX(0);
+      height: 100vh;
+      transition-delay: 0s;
+    }
+
+    .menu-toggle.active ~ .mobile-nav li {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Closing state */
+    .menu-toggle:not(.active) ~ .mobile-backdrop,
+    .menu-toggle:not(.active) ~ .mobile-nav {
+      transition-delay: 0s;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .menu-toggle:not(.active) ~ .mobile-nav {
+      transform: translateX(100%);
+      height: var(--header-height, 80px);
+    }
+
+    .menu-toggle:not(.active) ~ .mobile-nav li {
+      opacity: 0;
+      transform: translateY(20px);
+      transition-delay: 0s;
+    }
+
+    /* Content blur when menu is open */
+    :global(body.menu-open main) {
+      filter: blur(8px);
+      transition: filter 0.5s var(--ease-out-circ);
+    }
+
+    :global(body:not(.menu-open) main) {
+      filter: blur(0);
+      transition: filter 0.5s var(--ease-out-circ);
+    }
+
+    /* Logo transition states */
+    :global(.logo) {
+      position: relative;
+      z-index: 1;
+      transform: translate(0, 0);
+      transition:
+        transform 0.5s var(--ease-out-circ),
+        opacity 0.3s var(--ease-out-circ);
+    }
+
+    :global(body.menu-open header .logo) {
+      position: fixed;
+      z-index: 1001;
+      right: 151px;
+      top: 130px;
+      transition:
+        transform 0.5s var(--ease-out-circ),
+        opacity 0.3s var(--ease-out-circ);
+    }
+
+    :global(body:not(.menu-open) .logo) {
+      transition:
+        transform 0.5s var(--ease-out-circ),
+        opacity 0.3s var(--ease-out-circ);
     }
   }
 </style>
@@ -136,11 +285,19 @@ const menuItems = [
 <script>
   const menuToggle = document.querySelector('.menu-toggle');
   const links = document.querySelectorAll('.mobile-nav a');
+  const backdrop = document.querySelector('.mobile-backdrop');
+
+  function closeMenu() {
+    menuToggle?.classList.remove('active');
+    document.body.classList.remove('menu-open');
+  }
 
   function toggleMenu() {
     menuToggle?.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
   }
 
   menuToggle?.addEventListener('click', toggleMenu);
-  links.forEach(link => link.addEventListener('click', toggleMenu));
+  backdrop?.addEventListener('click', closeMenu);
+  links.forEach((link) => link.addEventListener('click', closeMenu));
 </script>

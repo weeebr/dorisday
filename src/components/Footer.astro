@@ -219,15 +219,29 @@ import Logo from './Logo.astro';
     text-decoration: none;
     font-size: var(--font-size-sm);
     padding: var(--space-component-sm) var(--space-component-md);
-    border-radius: var(--radius-lg);
-    background: rgba(255, 255, 255, 0.03);
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.05);
     transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .social-icon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(210, 180, 140, 0.15);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
   }
 
   .social-icon:hover {
     color: var(--color-surface-base);
-    background: rgba(255, 255, 255, 0.08);
     transform: translateY(-2px);
+  }
+
+  .social-icon:hover::before {
+    opacity: 1;
   }
 
   .social-icon svg {
