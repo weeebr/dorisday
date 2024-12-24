@@ -1,0 +1,32 @@
+.contact {
+  padding-block: var(--space-layout-md);
+}
+
+.contact-form {
+  max-width: var(--size-content-sm);
+  margin-inline: auto;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: var(--space-component-sm);
+  border: 1px solid var(--color-surface-muted);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-base);
+  color: var(--color-text-base);
+  font-size: var(--font-size-base);
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-primary-base);
+  box-shadow: 0 0 0 2px var(--color-primary-light);
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding-block: var(--space-layout-sm);
+  }
+}

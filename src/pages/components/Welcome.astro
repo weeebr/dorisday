@@ -2,14 +2,17 @@
 import Button from '../../components/Button.astro';
 ---
 
-<section id="welcome" class="welcome section">
+<section id="welcome" class="welcome section-alt">
   <div class="container text-center">
-    <h2>WILLKOMMEN</h2>
-    <p>
+    <h2 class="welcome-heading text-2xl">WILLKOMMEN</h2>
+    <div class="divider divider--short divider--fade"></div>
+    <p class="welcome-text">
       Wir sind Fluss Haus, Ihre Adresse für einzigartiges Wohnen in Lübbenau. Unsere Apartments
       vereinen die schönsten Seiten des Spreewalds mit modernem Komfort und stilvollem Design.
     </p>
-    <Button href="#rooms" variant="secondary">Entdecken Sie mehr</Button>
+    <div class="mt-lg">
+      <Button href="#rooms" variant="secondary">ENTDECKEN SIE MEHR</Button>
+    </div>
   </div>
 </section>
 

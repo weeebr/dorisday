@@ -1,0 +1,36 @@
+---
+import Logo from './Logo.astro';
+
+interface Props {
+  links?: Array<{
+    href: string;
+    text: string;
+  }>;
+}
+
+const {
+  links = [
+    { href: '/impressum', text: 'Impressum' },
+    { href: '/datenschutz', text: 'Datenschutz' },
+    { href: '/agb', text: 'AGB' },
+  ],
+} = Astro.props;
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <Logo size="medium" />
+      </div>
+      <div class="footer-links">
+        {links.map((link) => <a href={link.href}>{link.text}</a>)}
+      </div>
+      <p class="text-sm">&copy; {new Date().getFullYear()} Flusshaus. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  @import '../styles/footer.css';
+</style>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer Circle -->
+  <circle cx="60" cy="60" r="58" stroke="currentColor" stroke-width="2" />
+  
+  <!-- Inner Circle -->
+  <circle cx="60" cy="60" r="45" stroke="currentColor" stroke-width="1.5" />
+  
+  <!-- Decorative Pattern -->
+  <g>
+    <!-- Radial Lines -->
+    <path d="M60 15 L60 30" stroke="currentColor" stroke-width="1" />
+    <path d="M60 90 L60 105" stroke="currentColor" stroke-width="1" />
+    <path d="M15 60 L30 60" stroke="currentColor" stroke-width="1" />
+    <path d="M90 60 L105 60" stroke="currentColor" stroke-width="1" />
+    
+    <!-- Diagonal Lines -->
+    <path d="M28 28 L38 38" stroke="currentColor" stroke-width="1" />
+    <path d="M82 28 L72 38" stroke="currentColor" stroke-width="1" />
+    <path d="M28 92 L38 82" stroke="currentColor" stroke-width="1" />
+    <path d="M82 92 L72 82" stroke="currentColor" stroke-width="1" />
+  </g>
+  
+  <!-- Center Dot -->
+  <circle cx="60" cy="60" r="3" fill="currentColor" />
+  
+  <style>
+    svg {
+      transform-origin: center;
+      animation: rotate 30s linear infinite;
+    }
+    
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</svg> 

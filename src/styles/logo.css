@@ -1,0 +1,28 @@
+.logo {
+  display: inline-block;
+  transition: transform var(--transition-normal);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logo svg {
+  width: 100%;
+  height: 100%;
+}
+
+.logo--small {
+  width: 32px;
+  height: 32px;
+}
+
+.logo--medium {
+  width: 48px;
+  height: 48px;
+}
+
+.logo--large {
+  width: 64px;
+  height: 64px;
+}

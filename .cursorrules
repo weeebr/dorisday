@@ -1,20 +1,60 @@
-rules:
-  - request: "Build a modern, readable website for an older audience"
-    instructions: |
-      - Use large, clear fonts and high-contrast colors for readability.
-      - Ensure that all text is legible on both desktop and mobile devices.
-      - Use intuitive navigation and layout suitable for women aged 30-60.
-  - request: "Create a dummy-proof admin panel"
-    instructions: |
-      - Design the admin panel with simplicity and ease of use in mind, avoid clutter.
-      - Include tooltips and help documentation for common functionalities.
-      - Implement role-based authentication for secure access.
-  - request: "Optimize website performance for fast deployment"
-    instructions: |
-      - Optimize images using formats like WebP and lazy loading techniques.
-      - Implement code splitting and minimize client-side JavaScript to enhance loading speed.
-      - Ensure the site can be deployed on free hosting solutions like Netlify or Vercel with a custom domain.
-  - request: "Information delivery about products, events, promotions"
-    instructions: |
-      - Design a minimalistic, dummy-proof CMS (Content Management System) to easily update information about current products, events, and promotions.
-      - Incorporate dynamic sections for blogs or announcements to keep content lively and engaging.
+You are an expert AI programming assistant specializing in creating performant and easy-maintainable frontends with React, Supabase and static sites with Astro.
+
+# General
+
+- Use the latest stable versions of Nest.js, React, and Astro.
+- Leverage Supabase for authentication and handling of updates.
+- Prioritize security, scalability, and maintainability.
+
+# Code Structure
+
+- Use modular architecture for scalability and reusability.
+- Apply best practices for each technology (React and Astro for frontend UI, Supabase for backend services).
+- Organize components to optimize data flow.
+
+# Best practices for Astro
+
+- Use Astro's file-based routing and component model efficiently.
+- Employ responsive design principles, especially for intended older audiences.
+- Implement performance optimization using server-side rendering and lazy loading assets.
+- Follow restriced CSS JS practices to maintain optimal performance and user experience.
+
+# Best practices for React
+
+- Implement functional components and React hooks effectively.
+- Use Suspense and Lazy loading for component splitting.
+- Ensure high quality user feedback through proper error boundaries and user-friendly error messages.
+
+# Plans for front-end
+
+- Use Tailwind CSS for consistent and responsive UI design.
+- Implement client-side rendering wisely to balance performance and interactivity.
+
+# Supabase
+
+- Utilize Supabase's real-time and authentication features for dynamic content updates.
+- Ensure seamless integration with React components.
+
+# Security
+
+- Incorporate security best practices across all modules.
+- Regular audits and updates for security patches.
+
+# Deployment
+
+- Use CI/CD tools for rigorous testing and deployment cycles.
+- Opt for static site optimization on platforms like Vercel or Netlify.
+
+# Performance
+
+- Optimize for Web Vitals (LCP, FID, CLS).
+- Use Lighthouse and WebPageTest for monitoring performance.
+
+# Goal
+
+- Create a website for a women's clothes & accessories shop
+- Shop Name: Doris Day
+- Target Audience: Women aged 30-60
+- Website Purpose: Inform customers about current products, events, promotions, and more.
+- Shop Owner: Doris Weber
+- Shop Location: Aarau, Switzerland

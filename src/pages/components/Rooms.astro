@@ -21,10 +21,11 @@ const rooms = [
 ];
 ---
 
-<section id="rooms" class="section" style="background: var(--color-secondary);">
-  <div class="container">
-    <h2 class="text-medium text-center mb-2">BED & BEING</h2>
-    <div class="grid grid-3">
+<section id="rooms" class="rooms section-alt">
+  <div class="container text-center">
+    <h2 class="text-2xl mb-md">BED & BEING</h2>
+    <div class="divider divider--short divider--fade mb-lg"></div>
+    <div class="rooms-grid">
       {
         rooms.map((room) => (
           <Card
@@ -37,8 +38,12 @@ const rooms = [
         ))
       }
     </div>
-    <div class="text-center mt-2">
+    <div class="mt-lg">
       <Button href="#contact">Jetzt Buchen</Button>
     </div>
   </div>
 </section>
+
+<style>
+  @import '../../styles/rooms.css';
+</style>

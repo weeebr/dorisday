@@ -1,0 +1,35 @@
+/**
+ * Welcome Section
+ * Elegant and spacious layout
+ */
+
+.welcome {
+  background: var(--color-surface-base);
+}
+
+.welcome .container {
+  max-width: 800px;
+}
+
+.welcome h2 {
+  font-family: var(--font-family-heading);
+  font-size: clamp(var(--font-size-xl), 4vw, var(--font-size-2xl));
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--letter-spacing-widest);
+  margin-bottom: var(--space-layout-sm);
+  color: var(--color-text-base);
+}
+
+.welcome p {
+  font-size: clamp(var(--font-size-base), 2.5vw, var(--font-size-lg));
+  line-height: var(--line-height-relaxed);
+  letter-spacing: var(--letter-spacing-wide);
+  margin-bottom: var(--space-layout-md);
+  color: var(--color-text-muted);
+  max-width: 65ch;
+  margin-inline: auto;
+}
+
+.welcome .button {
+  margin-top: var(--space-layout-sm);
+}

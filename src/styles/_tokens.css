@@ -1,0 +1,84 @@
+/**
+ * Design Tokens
+ * Optimized for readability and accessibility
+ */
+
+:root {
+  /* Colors - Using a warmer, more readable palette */
+  --color-primary-light: #d4c5b9;
+  --color-primary-base: #b8a898;
+  --color-primary-dark: #8c7b6a;
+
+  --color-text-base: #2c2c2c; /* Slightly softer than pure black */
+  --color-text-muted: #595959; /* Accessible muted text */
+  --color-text-inverted: #ffffff;
+
+  --color-surface-base: #ffffff;
+  --color-surface-alt: #f7f5f3; /* Warm light background */
+  --color-surface-muted: #e8e2dc;
+
+  /* Typography - Optimized for readability */
+  --font-family-heading: 'Cormorant Garamond', serif;
+  --font-family-body: 'Montserrat', sans-serif;
+
+  /* Base size 16px -> 18px for better readability */
+  --font-size-base: 1.125rem;
+  --font-size-sm: 0.9rem; /* 16.2px */
+  --font-size-lg: 1.25rem; /* 22.5px */
+  --font-size-xl: 1.5rem; /* 27px */
+  --font-size-2xl: 2rem; /* 36px */
+  --font-size-3xl: 2.5rem; /* 45px */
+
+  /* Increased line heights for better readability */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Enhanced letter spacing */
+  --letter-spacing-tight: -0.015em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.015em;
+  --letter-spacing-wider: 0.05em;
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+
+  /* Spacing - More generous for better readability */
+  --space-component-xs: 0.5rem; /* 9px */
+  --space-component-sm: 1rem; /* 18px */
+  --space-component-md: 1.5rem; /* 27px */
+  --space-component-lg: 2rem; /* 36px */
+  --space-component-xl: 3rem; /* 54px */
+
+  --space-layout-xs: 2rem; /* 36px */
+  --space-layout-sm: 3rem; /* 54px */
+  --space-layout-md: 4.5rem; /* 81px */
+  --space-layout-lg: 6rem; /* 108px */
+  --space-layout-xl: 9rem; /* 162px */
+
+  /* Content Widths - Optimized for readability */
+  --size-content-xs: 20rem; /* 360px */
+  --size-content-sm: 30rem; /* 540px */
+  --size-content-md: 40rem; /* 720px */
+  --size-content-lg: 50rem; /* 900px */
+  --size-content-xl: 60rem; /* 1080px */
+
+  /* Border Radius - Slightly softer edges */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+
+  /* Transitions - Slightly slower for better visibility */
+  --transition-slow: 0.3s ease-in-out;
+  --transition-normal: 0.2s ease-in-out;
+  --transition-fast: 0.1s ease-in-out;
+
+  /* Z-index */
+  --z-below: -1;
+  --z-base: 0;
+  --z-above: 1;
+  --z-header: 100;
+  --z-modal: 1000;
+}

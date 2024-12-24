@@ -1,0 +1,16 @@
+---
+interface Props {
+  size?: 'small' | 'medium' | 'large';
+  class?: string;
+}
+
+const { size = 'medium', class: className } = Astro.props;
+---
+
+<div class:list={['logo', `logo--${size}`, className]}>
+  <img src="/logo-icon.svg" alt="Flusshaus Logo" />
+</div>
+
+<style>
+  @import '../styles/logo.css';
+</style>
