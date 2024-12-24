@@ -35,7 +35,124 @@ const {
 </nav>
 
 <style>
-  @import '@/styles/navigation.css';
+  .nav {
+    display: flex;
+    align-items: center;
+    padding: var(--space-component-md) 0;
+  }
+
+  .nav ul {
+    display: flex;
+    align-items: center;
+    gap: var(--space-layout-md);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-link {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-base);
+    letter-spacing: var(--letter-spacing-wide);
+    padding: var(--space-component-md);
+    transition: color var(--transition-normal);
+    text-decoration: none;
+    font-weight: var(--font-weight-light);
+    position: relative;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover {
+    color: var(--color-text-base);
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: all var(--transition-normal);
+    transform: translateX(-50%);
+  }
+
+  .nav-link:hover::after {
+    width: calc(100% - 2.5rem);
+  }
+
+  @media (max-width: 1300px) {
+    .nav {
+      position: fixed;
+      inset: 0;
+      z-index: var(--z-overlay);
+      padding: 0;
+      visibility: hidden;
+      opacity: 0;
+      transition:
+        visibility 0s linear var(--transition-normal),
+        opacity var(--transition-normal);
+    }
+
+    .nav-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transition: opacity var(--transition-normal);
+    }
+
+    .nav-content {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: min(100%, 400px);
+      height: 100%;
+      background: var(--color-surface-base);
+      transform: translateX(100%);
+      transition: transform var(--transition-normal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav ul {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-layout-lg);
+      padding: var(--space-layout-xl);
+      width: 100%;
+    }
+
+    .nav-link {
+      font-size: var(--font-size-lg);
+      padding: var(--space-component-lg);
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+    }
+
+    .nav-link::after {
+      bottom: 1rem;
+    }
+  }
+
+  /* Open State */
+  :global(body.menu-open) .nav {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+  }
+
+  :global(body.menu-open) .nav-backdrop {
+    opacity: 1;
+  }
+
+  :global(body.menu-open) .nav-content {
+    transform: translateX(0);
+  }
 </style>
 
 <script>
