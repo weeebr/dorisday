@@ -13,15 +13,30 @@
   letter-spacing: var(--letter-spacing-wider);
   text-transform: uppercase;
   border: 1px solid var(--color-text-base);
-  background: transparent;
-  color: var(--color-text-base);
   transition: all var(--transition-normal);
   cursor: pointer;
   text-decoration: none;
   min-width: 220px;
 }
 
-.button:hover {
+/* Primary variant (inverted) */
+.button--primary {
+  background: var(--color-text-base);
+  color: var(--color-surface-base);
+}
+
+.button--primary:hover {
+  background: transparent;
+  color: var(--color-text-base);
+}
+
+/* Secondary variant */
+.button--secondary {
+  background: transparent;
+  color: var(--color-text-base);
+}
+
+.button--secondary:hover {
   background: var(--color-text-base);
   color: var(--color-surface-base);
 }
@@ -31,11 +46,6 @@
   box-shadow:
     0 0 0 2px var(--color-surface-base),
     0 0 0 3px var(--color-text-base);
-}
-
-/* Secondary variant */
-.button--secondary {
-  border-width: 1px;
 }
 
 /* Responsive adjustments */

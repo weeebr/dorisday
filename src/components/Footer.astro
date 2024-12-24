@@ -2,27 +2,36 @@
 import Logo from './Logo.astro';
 ---
 
-<div class="footer-outer">
+<footer class="footer-outer">
+  <div class="footer-gradient"></div>
   <div class="footer-inner">
     <div class="footer-content">
       <div class="footer-branding">
-        <Logo size="large" />
-        <h2>Doris Day</h2>
+        <div class="logo-wrapper">
+          <Logo size="large" />
+        </div>
+        <h2 class="brand-name">Doris Day</h2>
         <p class="footer-tagline">Zeitlose Mode & Eleganz in Aarau</p>
       </div>
 
       <div class="footer-sections">
-        <div class="footer-section">
+        <div class="footer-section footer-section--hours">
           <h3>Öffnungszeiten</h3>
-          <p>Mo - Fr: 10:00 - 18:30</p>
-          <p>Sa: 10:00 - 16:00</p>
+          <ul class="hours-list">
+            <li><span>Montag - Freitag</span><span>10:00 - 18:30</span></li>
+            <li><span>Samstag</span><span>10:00 - 16:00</span></li>
+            <li><span>Sonntag</span><span>Geschlossen</span></li>
+          </ul>
         </div>
 
-        <div class="footer-section">
+        <div class="footer-section footer-section--contact">
           <h3>Kontakt</h3>
-          <p>Laurenzenvorstadt 90</p>
-          <p>5000 Aarau</p>
-          <p>+41 62 000 00 00</p>
+          <address>
+            <p>Laurenzenvorstadt 90</p>
+            <p>5000 Aarau</p>
+            <a href="tel:+41620000000" class="contact-link">+41 62 000 00 00</a>
+            <a href="mailto:info@dorisday.ch" class="contact-link">info@dorisday.ch</a>
+          </address>
         </div>
 
         <div class="footer-section footer-section--social">
@@ -31,8 +40,8 @@ import Logo from './Logo.astro';
             <a href="#" class="social-icon" aria-label="Instagram">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="48"
-                height="48"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -41,12 +50,13 @@ import Logo from './Logo.astro';
                 <circle cx="12" cy="12" r="4.5" stroke-width="1.5"></circle>
                 <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"></circle>
               </svg>
+              <span>Instagram</span>
             </a>
             <a href="#" class="social-icon" aria-label="Facebook">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="48"
-                height="48"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -55,18 +65,291 @@ import Logo from './Logo.astro';
                   d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z"
                   stroke-width="1.5"></path>
               </svg>
+              <span>Facebook</span>
             </a>
           </div>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p class="copyright">© 2024 Doris Day. Alle Rechte vorbehalten.</p>
+        <p class="copyright">© {new Date().getFullYear()} Doris Day. Alle Rechte vorbehalten.</p>
       </div>
     </div>
   </div>
-</div>
+</footer>
 
 <style>
-  @import '@/styles/footer.css';
+  .footer-outer {
+    width: 100%;
+    padding: var(--space-layout-xl) 0 var(--space-layout-lg);
+    background: linear-gradient(to bottom, #2a1810, #1a0f0a);
+    position: relative;
+    overflow: hidden;
+    color: var(--color-surface-base);
+  }
+
+  .footer-gradient {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .footer-inner {
+    width: min(100% - 4rem, var(--size-content-xl));
+    margin-inline: auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-layout-lg);
+  }
+
+  .footer-branding {
+    text-align: center;
+    margin-bottom: var(--space-layout-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-component-md);
+  }
+
+  .logo-wrapper {
+    transform: scale(1);
+    transition: transform 0.3s var(--ease-out-circ);
+  }
+
+  .logo-wrapper:hover {
+    transform: scale(1.05);
+  }
+
+  .brand-name {
+    font-size: var(--font-size-xl);
+    letter-spacing: var(--letter-spacing-widest);
+    font-weight: var(--font-weight-light);
+    margin: 0;
+    color: var(--color-surface-base);
+    opacity: 0.95;
+  }
+
+  .footer-tagline {
+    margin: 0;
+    color: var(--color-surface-muted);
+    font-size: var(--font-size-sm);
+    letter-spacing: var(--letter-spacing-wide);
+    font-weight: var(--font-weight-light);
+  }
+
+  .footer-sections {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-layout-xl);
+    padding: var(--space-layout-lg) 0;
+    border-block: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-section h3 {
+    font-size: var(--font-size-sm);
+    letter-spacing: var(--letter-spacing-wider);
+    margin-bottom: var(--space-component-lg);
+    color: var(--color-surface-base);
+    font-weight: var(--font-weight-medium);
+    opacity: 0.9;
+  }
+
+  .hours-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-component-sm);
+  }
+
+  .hours-list li {
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-surface-muted);
+    font-size: var(--font-size-sm);
+    letter-spacing: var(--letter-spacing-wide);
+  }
+
+  address {
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-component-sm);
+  }
+
+  address p {
+    color: var(--color-surface-muted);
+    font-size: var(--font-size-sm);
+    margin: 0;
+    letter-spacing: var(--letter-spacing-wide);
+  }
+
+  .contact-link {
+    color: var(--color-surface-muted);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    letter-spacing: var(--letter-spacing-wide);
+    transition: all var(--transition-normal);
+    width: fit-content;
+  }
+
+  .contact-link:hover {
+    color: var(--color-surface-base);
+    transform: translateX(4px);
+  }
+
+  .footer-social {
+    display: flex;
+    gap: var(--space-layout-sm);
+    margin-top: var(--space-component-md);
+  }
+
+  .social-icon {
+    display: flex;
+    align-items: center;
+    gap: var(--space-component-sm);
+    color: var(--color-surface-muted);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    padding: var(--space-component-sm) var(--space-component-md);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.03);
+    transition: all var(--transition-normal);
+  }
+
+  .social-icon:hover {
+    color: var(--color-surface-base);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .social-icon svg {
+    width: 20px;
+    height: 20px;
+    transition: transform var(--transition-normal);
+  }
+
+  .social-icon:hover svg {
+    transform: scale(1.1);
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-layout-sm);
+    padding-top: var(--space-layout-sm);
+  }
+
+  .footer-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-component-lg);
+  }
+
+  .footer-link {
+    color: var(--color-surface-muted);
+    font-size: var(--font-size-xs);
+    letter-spacing: var(--letter-spacing-wider);
+    text-decoration: none;
+    transition: all var(--transition-normal);
+    padding: var(--space-component-xs) var(--space-component-sm);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: translateX(-101%);
+    transition: transform 0.3s var(--ease-out-circ);
+  }
+
+  .footer-link:hover {
+    color: var(--color-surface-base);
+  }
+
+  .footer-link:hover::before {
+    transform: translateX(0);
+  }
+
+  .footer-divider {
+    color: var(--color-surface-muted);
+    font-size: var(--font-size-xs);
+    opacity: 0.3;
+  }
+
+  .copyright {
+    color: var(--color-surface-muted);
+    font-size: var(--font-size-xs);
+    letter-spacing: var(--letter-spacing-wide);
+    opacity: 0.7;
+  }
+
+  @media (max-width: 1024px) {
+    .footer-sections {
+      gap: var(--space-layout-lg);
+    }
+
+    .social-icon span {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer-outer {
+      padding: var(--space-layout-lg) 0;
+    }
+
+    .footer-sections {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: var(--space-layout-lg);
+    }
+
+    .footer-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hours-list li {
+      flex-direction: column;
+      gap: var(--space-component-xs);
+      align-items: center;
+    }
+
+    address {
+      align-items: center;
+    }
+
+    .contact-link:hover {
+      transform: translateX(0) translateY(-2px);
+    }
+
+    .footer-social {
+      justify-content: center;
+    }
+
+    .footer-nav {
+      flex-direction: column;
+      gap: var(--space-component-md);
+    }
+
+    .footer-divider {
+      display: none;
+    }
+  }
 </style>
