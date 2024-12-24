@@ -150,7 +150,6 @@ const menuItems = [
       margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
       width: 100%;
       padding: 0 2rem;
     }
@@ -168,7 +167,7 @@ const menuItems = [
       color: var(--color-text-muted);
       text-decoration: none;
       font-size: var(--font-size-lg);
-      padding: var(--space-component-md);
+      padding: var(--space-component-lg);
       display: block;
       text-align: center;
       letter-spacing: var(--letter-spacing-widest);
@@ -207,7 +206,7 @@ const menuItems = [
     .menu-toggle.active ~ .mobile-backdrop {
       opacity: 1;
       visibility: visible;
-      pointer-events: none;
+      pointer-events: auto;
       transition-delay: 0s;
     }
 
@@ -245,8 +244,12 @@ const menuItems = [
 
     /* Content blur when menu is open */
     :global(body.menu-open main) {
+      pointer-events: none;
+      user-select: none;
       filter: blur(8px);
-      transition: filter 0.5s var(--ease-out-circ);
+      transition:
+        filter 0.5s var(--ease-out-circ),
+        pointer-events 0s;
     }
 
     :global(body:not(.menu-open) main) {
@@ -278,6 +281,11 @@ const menuItems = [
       transition:
         transform 0.5s var(--ease-out-circ),
         opacity 0.3s var(--ease-out-circ);
+    }
+
+    /* Prevent interaction with underlying elements when menu is open */
+    :global(body.menu-open) {
+      overflow: hidden;
     }
   }
 </style>
