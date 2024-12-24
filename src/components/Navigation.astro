@@ -18,17 +18,20 @@ const {
 ---
 
 <nav class="nav" aria-label="Hauptnavigation">
-  <ul>
-    {
-      items.map((item) => (
-        <li>
-          <a href={item.href} class="nav-link">
-            {item.text}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+  <div class="nav-backdrop"></div>
+  <div class="nav-content">
+    <ul>
+      {
+        items.map((item) => (
+          <li>
+            <a href={item.href} class="nav-link">
+              {item.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </nav>
 
 <style>
@@ -69,12 +72,31 @@ const {
     .nav {
       display: none;
       position: fixed;
+      inset: 0;
+      z-index: var(--z-overlay);
+    }
+
+    .nav-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transition: opacity var(--transition-normal);
+    }
+
+    .nav-content {
+      position: absolute;
       top: 0;
-      left: 0;
       right: 0;
       bottom: 0;
+      width: min(100%, 400px);
       background: var(--color-surface-base);
-      z-index: var(--z-overlay);
+      transform: translateX(100%);
+      transition: transform var(--transition-normal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-layout-xl);
     }
 
     .nav ul {
@@ -82,9 +104,7 @@ const {
       justify-content: center;
       align-items: center;
       gap: var(--space-layout-lg);
-      min-height: 100vh;
-      padding-top: var(--space-layout-2xl);
-      padding-bottom: var(--space-layout-xl);
+      width: 100%;
     }
 
     .nav-link {
@@ -92,26 +112,37 @@ const {
       color: var(--color-text-base);
       display: block;
       padding: var(--space-component-lg);
+      text-align: center;
+      width: 100%;
     }
 
     :global(body.menu-open) .nav {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding-top: calc(var(--space-layout-2xl) + var(--space-layout-xl));
+      display: block;
+    }
+
+    :global(body.menu-open) .nav-backdrop {
+      opacity: 1;
+    }
+
+    :global(body.menu-open) .nav-content {
+      transform: translateX(0);
     }
   }
 </style>
 
 <script>
-  // Close mobile menu when clicking on a link
+  // Close mobile menu when clicking on a link or backdrop
+  const closeMenu = () => {
+    document.body.classList.remove('menu-open');
+    const menuToggle = document.querySelector('.menu-toggle');
+    if (menuToggle) {
+      menuToggle.classList.remove('active');
+    }
+  };
+
   document.querySelectorAll('.nav-link').forEach((link) => {
-    link.addEventListener('click', () => {
-      document.body.classList.remove('menu-open');
-      const menuToggle = document.querySelector('.menu-toggle');
-      if (menuToggle) {
-        menuToggle.classList.remove('active');
-      }
-    });
+    link.addEventListener('click', closeMenu);
   });
+
+  document.querySelector('.nav-backdrop')?.addEventListener('click', closeMenu);
 </script>
