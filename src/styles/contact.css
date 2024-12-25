@@ -6,11 +6,10 @@
 .contact {
   position: relative;
   width: 100%;
-  min-height: 100vh;
   display: grid;
   place-items: center;
   overflow: hidden;
-  background: #f2f6f6;
+  background: var(--color-surface-alt);
 
   .image-container {
     position: absolute;
@@ -25,38 +24,24 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
-      border-radius: var(--radius-sm);
       box-shadow: var(--shadow-inset);
       transform: scaleX(-1);
+
+      img {
+        border-radius: 0;
+      }
     }
   }
 
   .content-wrapper {
-    position: absolute;
-    inset: 0;
+    position: relative;
+    width: 100%;
     background: rgba(242, 246, 246, 0.92);
     display: flex;
     align-items: center;
     justify-content: center;
     -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
-  }
-
-  .container {
-    position: relative;
-    z-index: var(--z-above);
-    padding-block: var(--space-layout-lg);
-    width: min(100% - 4rem, var(--size-content));
-    margin-inline: auto;
-  }
-
-  h2 {
-    text-align: center;
-    font-size: var(--font-size-xl);
-    letter-spacing: var(--letter-spacing-wider);
-    margin-bottom: var(--space-layout-sm);
-    font-weight: var(--font-weight-light);
-    color: var(--color-text-base);
   }
 }
 
@@ -142,7 +127,7 @@
       left: 0;
       width: 60px;
       height: 1px;
-      background: #b8cfcf;
+      background: var(--color-border-muted);
     }
   }
 }
@@ -164,7 +149,6 @@
   textarea {
     width: 100%;
     padding: var(--space-component-sm);
-    background: #edf5f5;
     border: 1px solid rgba(219, 228, 228, 0.6);
     border-radius: var(--radius-sm);
     font-family: var(--font-family-base);
@@ -193,20 +177,12 @@
 
 .form-submit {
   text-align: right;
-
-  .button {
-    &:hover {
-      background: rgba(184, 199, 199, 0.9);
-      border-color: rgba(184, 199, 199, 0.9);
-      color: var(--color-text-base);
-    }
-  }
 }
 
 @media (max-width: 768px) {
   .contact-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-layout-lg);
+    gap: var(--space-layout-xl);
   }
 
   .contact-info {
@@ -219,5 +195,13 @@
 
   .form-submit {
     text-align: center;
+  }
+
+  .info-group {
+    text-align: center;
+
+    h4::after {
+      margin-inline: auto;
+    }
   }
 }

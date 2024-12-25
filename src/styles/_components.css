@@ -6,7 +6,6 @@
 /* Section Layout Utilities */
 .layout-outer {
   width: 100%;
-  padding: var(--space-layout-xl) 0;
   background: var(--color-surface-base);
   position: relative;
   overflow: hidden;
@@ -36,6 +35,7 @@
   margin-inline: auto;
   position: relative;
   z-index: 1;
+  padding: var(--space-layout-xl) 0;
 }
 
 .layout-inner--narrow {
@@ -44,13 +44,6 @@
 
 .layout-inner--medium {
   max-width: var(--size-content-lg);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .layout-outer {
-    padding: var(--space-layout-lg) 0;
-  }
 }
 
 /* Divider Pattern */

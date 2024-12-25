@@ -5,7 +5,6 @@
 
 .cafe {
   position: relative;
-  min-height: 100vh;
   background: var(--color-surface-alt);
   display: grid;
   place-items: center;
