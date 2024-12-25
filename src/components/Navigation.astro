@@ -5,6 +5,8 @@ interface Props {
 }
 
 const { class: className, items } = Astro.props;
+
+import '@/styles/navigation.css';
 ---
 
 <nav class:list={['nav', className]}>
@@ -20,59 +22,3 @@ const { class: className, items } = Astro.props;
     }
   </ul>
 </nav>
-
-<style>
-  .nav {
-    display: flex;
-    align-items: center;
-    padding: var(--space-component-md) 0;
-  }
-
-  .nav ul {
-    display: flex;
-    align-items: center;
-    gap: var(--space-layout-md);
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .nav-link {
-    color: var(--color-text-muted);
-    font-size: var(--font-size-base);
-    letter-spacing: var(--letter-spacing-wide);
-    padding: var(--space-component-md);
-    transition: all var(--transition-normal);
-    text-decoration: none;
-    font-weight: var(--font-weight-light);
-    position: relative;
-    white-space: nowrap;
-    cursor: pointer;
-  }
-
-  .nav-link:hover {
-    color: var(--color-text-base);
-  }
-
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0.5rem;
-    left: 50%;
-    width: 0;
-    height: 1px;
-    background: currentColor;
-    transition: all var(--transition-bounce);
-    transform: translateX(-50%);
-  }
-
-  .nav-link:hover::after {
-    width: calc(100% - 2.5rem);
-  }
-
-  @media (max-width: 1300px) {
-    .nav ul {
-      display: none;
-    }
-  }
-</style>

@@ -1,6 +1,6 @@
 /**
  * Header Component
- * Contains styles for the main header and mobile menu states
+ * Fixed header with scroll state
  */
 
 .header {
@@ -9,52 +9,19 @@
   left: 0;
   right: 0;
   z-index: var(--z-header);
-  transition:
-    background-color var(--transition-normal),
-    backdrop-filter var(--transition-normal),
-    -webkit-backdrop-filter var(--transition-normal);
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
+  background: var(--color-surface-alt);
+  transition: all var(--transition-normal);
 
-.header.scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-block: var(--space-component-md);
-  position: relative;
-}
-
-.header-logo {
-  transition:
-    transform var(--transition-normal),
-    scale var(--transition-normal);
-  position: relative;
-  cursor: pointer;
-}
-
-/* Mobile menu states */
-@media (max-width: 1300px) {
-  body.menu-open {
-    overflow: hidden;
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-component-md) 0;
   }
+}
 
-  body.menu-open .header {
-    background: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-  }
-
-  body.menu-open .header.scrolled {
-    background: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-  }
+/* Scrolled State */
+:global(body.scrolled) .header {
+  background: var(--color-surface-alt);
+  box-shadow: var(--shadow-sm);
 }

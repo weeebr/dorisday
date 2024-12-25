@@ -14,43 +14,43 @@
   text-transform: uppercase;
   border: 1px solid var(--color-text-base);
   transition: all var(--transition-normal);
-  cursor: pointer;
+  cursor: pointer !important;
   text-decoration: none;
   min-width: 220px;
-}
+  position: relative;
+  overflow: hidden;
 
-/* Primary variant (inverted) */
-.button--primary {
-  background: var(--color-text-base);
-  color: var(--color-surface-base);
-}
+  /* Primary variant (inverted) */
+  &--primary {
+    background: var(--color-text-base);
+    color: var(--color-surface-base);
 
-.button--primary:hover {
-  background: transparent;
-  color: var(--color-text-base);
-}
+    &:hover {
+      background: transparent;
+      color: var(--color-text-base);
+    }
+  }
 
-/* Secondary variant */
-.button--secondary {
-  background: transparent;
-  color: var(--color-text-base);
-}
+  /* Secondary variant */
+  &--secondary {
+    background: transparent;
+    color: var(--color-text-base);
 
-.button--secondary:hover {
-  background: var(--color-text-base);
-  color: var(--color-surface-base);
-}
+    &:hover {
+      background: var(--color-text-base);
+      color: var(--color-surface-base);
+    }
+  }
 
-.button:focus-visible {
-  outline: none;
-  box-shadow:
-    0 0 0 2px var(--color-surface-base),
-    0 0 0 3px var(--color-text-base);
-}
+  &:focus {
+    outline: none;
+    box-shadow:
+      0 0 0 2px var(--color-surface-base),
+      0 0 0 3px var(--color-text-base);
+  }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .button {
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
     padding: 1rem 2.5rem;
     min-width: 200px;
   }

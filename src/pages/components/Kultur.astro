@@ -1,176 +1,48 @@
 ---
-import Button from '../../components/Button.astro';
+import CardOutlined from '../../components/CardOutlined.astro';
+import '@/styles/kultur.css';
 
 const events = [
   {
-    date: '15. Januar 2024',
-    title: 'Modelesung mit Sarah Weber',
-    description: 'Ein Abend über nachhaltige Mode und bewusstes Konsumieren.',
+    title: 'Vernissage: Herbst/Winter 2023',
+    date: '15. September 2023',
+    description:
+      'Seien Sie dabei, wenn wir unsere neue Kollektion präsentieren. Ein Abend voller Mode, Kunst und anregender Gespräche.',
   },
   {
-    date: '22. Januar 2024',
-    title: 'Kunstausstellung: Textilien in der modernen Kunst',
-    description: 'Lokale Künstler präsentieren ihre Werke zum Thema Mode und Textilien.',
+    title: 'Workshop: Nachhaltige Mode',
+    date: '22. September 2023',
+    description:
+      'Lernen Sie mehr über nachhaltige Materialien und bewussten Konsum. Mit Expertinnen aus der Modebranche.',
   },
   {
-    date: '29. Januar 2024',
-    title: 'Jazz & Fashion Night',
-    description: 'Entspannter Abend mit Live-Jazz und Preview der neuen Kollektion.',
+    title: 'Kunst & Mode',
+    date: '29. September 2023',
+    description:
+      'Eine besondere Ausstellung lokaler Künstlerinnen in Verbindung mit ausgewählten Modestücken.',
   },
 ];
 ---
 
-<section id="kultur" class="kultur-outer">
-  <div class="kultur-inner">
-    <h2>Kultur & Events</h2>
-    <p class="section-intro">
-      Mehr als Mode: Erleben Sie inspirierende Veranstaltungen in unserem Haus. Von Lesungen über
-      Ausstellungen bis hin zu Musikabenden – ein Ort der Begegnung und des Austauschs.
+<section id="kultur" class="layout-outer kultur">
+  <div class="layout-inner">
+    <div class="title-container">
+      <h2 class="section-title section-title--primary">Kultur & Events</h2>
+    </div>
+    <p class="kultur-intro">
+      Mode ist mehr als Kleidung. Entdecken Sie bei uns regelmäßig neue Ausstellungen, Workshops und
+      Events.
     </p>
 
     <div class="events-grid">
       {
         events.map((event) => (
-          <div class="event-card">
+          <CardOutlined title={event.title} variant="light">
             <div class="event-date">{event.date}</div>
-            <div class="event-content">
-              <h3>{event.title}</h3>
-              <p>{event.description}</p>
-            </div>
-          </div>
+            <p>{event.description}</p>
+          </CardOutlined>
         ))
       }
     </div>
-
-    <div class="kultur-cta">
-      <Button href="/kultur" variant="primary">Alle Veranstaltungen</Button>
-    </div>
   </div>
 </section>
-
-<style>
-  .kultur-outer {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    background-image: url('https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&q=80');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-  }
-
-  .kultur-outer::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-  }
-
-  .kultur-inner {
-    position: relative;
-    width: min(100% - 4rem, var(--size-content-xl));
-    margin-inline: auto;
-    padding: var(--space-layout-xl) 0;
-  }
-
-  .image-container,
-  .image-container__image,
-  .content-wrapper {
-    display: none;
-  }
-
-  h2 {
-    text-align: center;
-    font-size: var(--font-size-xl);
-    letter-spacing: var(--letter-spacing-wider);
-    margin-bottom: var(--space-component-md);
-    font-weight: var(--font-weight-light);
-    color: var(--color-text-base);
-  }
-
-  .section-intro {
-    text-align: center;
-    max-width: 60ch;
-    margin-inline: auto;
-    margin-bottom: var(--space-layout-lg);
-    color: var(--color-text-muted);
-    font-size: var(--font-size-sm);
-    letter-spacing: var(--letter-spacing-wide);
-    line-height: var(--line-height-relaxed);
-  }
-
-  .events-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-layout-md);
-    margin-bottom: var(--space-layout-xl);
-  }
-
-  .event-card {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-component-md);
-    padding: var(--space-layout-md);
-    background: var(--color-surface-alt);
-    border: 1px solid var(--color-border-muted);
-    border-radius: var(--radius-sm);
-    transition: all var(--transition-normal);
-  }
-
-  .event-card:hover {
-    background: rgba(255, 255, 255, 0.95);
-    border-color: var(--color-text-muted);
-  }
-
-  .event-date {
-    font-family: var(--font-family-heading);
-    font-size: var(--font-size-sm);
-    letter-spacing: var(--letter-spacing-wider);
-    color: var(--color-text-muted);
-    font-weight: var(--font-weight-light);
-    border-bottom: 1px solid var(--color-border-muted);
-    padding-bottom: var(--space-component-sm);
-  }
-
-  .event-content h3 {
-    font-family: var(--font-family-heading);
-    font-size: var(--font-size-base);
-    letter-spacing: var(--letter-spacing-wide);
-    margin-bottom: var(--space-component-sm);
-    font-weight: var(--font-weight-light);
-    color: var(--color-text-base);
-    line-height: var(--line-height-snug);
-  }
-
-  .event-content p {
-    color: var(--color-text-muted);
-    font-size: var(--font-size-sm);
-    letter-spacing: var(--letter-spacing-normal);
-    line-height: var(--line-height-relaxed);
-  }
-
-  .kultur-cta {
-    text-align: center;
-  }
-
-  @media (max-width: 1024px) {
-    .events-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 768px) {
-    .events-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .event-card {
-      text-align: center;
-    }
-  }
-</style>

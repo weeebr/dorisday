@@ -1,28 +1,55 @@
+/**
+ * Logo Component
+ * Animated logo with size variants
+ */
+
 .logo {
   display: inline-block;
   transition: transform var(--transition-normal);
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    animation: rotate 20s linear infinite;
+  }
+
+  &--small {
+    width: 96px;
+    height: 96px;
+  }
+
+  &--medium {
+    width: 128px;
+    height: 128px;
+  }
+
+  &--large {
+    width: 160px;
+    height: 160px;
+  }
 }
 
-.logo:hover {
-  transform: scale(1.05);
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.logo svg {
-  width: 100%;
-  height: 100%;
+.header .logo {
+  transition: all var(--transition-normal);
 }
 
-.logo--small {
-  width: 32px;
-  height: 32px;
-}
-
-.logo--medium {
-  width: 48px;
-  height: 48px;
-}
-
-.logo--large {
-  width: 64px;
-  height: 64px;
+.menu-open .header .logo {
+  position: absolute;
+  top: 170px;
+  right: 127px;
+  z-index: 9999;
 }

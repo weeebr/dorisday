@@ -1,0 +1,103 @@
+/**
+ * Cafe Section
+ * Cafe and bistro showcase
+ */
+
+.cafe {
+  position: relative;
+  min-height: 100vh;
+  background: var(--color-surface-alt);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0.08;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: var(--font-size-xl);
+    letter-spacing: var(--letter-spacing-wider);
+    margin-bottom: var(--space-component-md);
+    font-weight: var(--font-weight-light);
+    color: var(--color-text-base);
+  }
+}
+
+.cafe-intro {
+  text-align: center;
+  max-width: 60ch;
+  margin-inline: auto;
+  margin-bottom: var(--space-layout-lg);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  letter-spacing: var(--letter-spacing-wide);
+  line-height: var(--line-height-relaxed);
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-layout-md);
+  margin-bottom: var(--space-layout-xl);
+  position: relative;
+  z-index: 1;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-component-md);
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-component-sm);
+
+  h4 {
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-base);
+    letter-spacing: var(--letter-spacing-wide);
+    font-weight: var(--font-weight-light);
+    color: var(--color-text-base);
+  }
+
+  .price {
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-sm);
+    letter-spacing: var(--letter-spacing-wider);
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-light);
+    white-space: nowrap;
+  }
+
+  .description {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    letter-spacing: var(--letter-spacing-normal);
+    line-height: var(--line-height-relaxed);
+    margin-top: var(--space-component-xs);
+  }
+}
+
+.cafe-cta {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+}

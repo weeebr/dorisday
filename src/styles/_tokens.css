@@ -5,13 +5,21 @@
 
 :root {
   /* Colors - Refined for visual harmony */
-  --color-primary-base: #9b8579; /* Warm taupe */
-  --color-primary-dark: #7a6557; /* Deep taupe */
-  --color-primary-light: #d5c3b6; /* Light taupe */
+  --color-primary-base: #b66e49; /* Warm terracotta */
+  --color-primary-dark: #8e553a; /* Deep terracotta */
+  --color-primary-light: #d4a390; /* Light terracotta */
+
+  --color-secondary-base: #b8cfcf; /* Soft blue-grey */
+  --color-secondary-dark: #9ab5b5; /* Deep blue-grey */
+  --color-secondary-light: #d6e3e3; /* Light blue-grey */
+
+  --color-accent-base: #dbe4e4; /* Soft sage */
+  --color-accent-dark: #b8c7c7; /* Deep sage */
+  --color-accent-light: #edf2f2; /* Light sage */
 
   --color-surface-base: #ffffff; /* Pure white */
   --color-surface-muted: #f9f7f5; /* Warmer white */
-  --color-surface-alt: #f4f1ee; /* Light beige */
+  --color-surface-alt: rgb(182, 110, 73, 0.07); /* Warm terracotta with low opacity */
 
   --color-text-base: #2c2420; /* Soft black */
   --color-text-muted: #6b5e57; /* Warm gray */

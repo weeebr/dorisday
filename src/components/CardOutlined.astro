@@ -1,0 +1,18 @@
+---
+interface Props {
+  title: string;
+  variant?: 'light' | 'dark';
+  class?: string;
+}
+
+const { title, variant = 'light', class: className } = Astro.props;
+
+import '@/styles/card-outlined.css';
+---
+
+<div class:list={['card-outlined', `card-outlined--${variant}`, className]}>
+  <h3 class="card-outlined__title">{title}</h3>
+  <div class="card-outlined__content">
+    <slot />
+  </div>
+</div>

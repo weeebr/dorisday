@@ -1,36 +1,79 @@
 ---
 import Button from '../../components/Button.astro';
+import '@/styles/contact.css';
+
+const contactInfo = {
+  address: {
+    title: 'Adresse',
+    lines: ['Laurenzenvorstadt 90', '5000 Aarau'],
+  },
+  hours: {
+    title: 'Öffnungszeiten',
+    lines: ['Mo - Fr: 09:00 - 18:30', 'Sa: 09:00 - 16:00'],
+  },
+  contact: {
+    title: 'Kontakt',
+    lines: ['Tel: 078 811 52 00', 'Email: dorisday@gmail.com'],
+  },
+};
 ---
 
-<div class="contact-outer">
-  <div class="contact-inner">
-    <h2>KONTAKTIERE UNS</h2>
-    <form>
-      <div class="form-group">
-        <label>NAME *</label>
-        <input
-          type="text"
-          name="name"
-          placeholder="Dein Name (wir freuen uns auf dich!)"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label>EMAIL *</label>
-        <input type="email" name="email" placeholder="Deine Email-Adresse" required />
-      </div>
-      <div class="form-group">
-        <label>NACHRICHT *</label>
-        <textarea
-          name="message"
-          placeholder="Fragen, Wünsche, Träume... wir sind ganz Ohr."
-          required></textarea>
-      </div>
-      <Button type="submit" variant="secondary">SENDEN</Button>
-    </form>
+<section class="layout-outer contact">
+  <div class="image-container">
+    <img
+      src="https://images.unsplash.com/photo-1517697471339-4aa32003c11a?auto=format&fit=crop&q=80"
+      alt="Elegant marble texture background"
+      class="image-container__image"
+    />
   </div>
-</div>
+  <div class="content-wrapper">
+    <div class="layout-inner">
+      <div class="title-container">
+        <h2 class="section-title section-title--secondary">Kontakt</h2>
+      </div>
+      <p class="contact-intro">
+        Haben Sie Fragen zu unseren Produkten oder Dienstleistungen? Wir sind für Sie da und freuen
+        uns auf Ihre Nachricht.
+      </p>
 
-<style>
-  @import '@/styles/contact.css';
-</style>
+      <div class="contact-grid">
+        <div class="contact-info">
+          {
+            Object.entries(contactInfo).map(([key, info]) => (
+              <div class="info-group">
+                <h4>{info.title}</h4>
+                {info.lines.map((line) => (
+                  <p>{line}</p>
+                ))}
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="contact-form">
+          <h3>Schreiben Sie uns</h3>
+          <form action="/api/contact" method="POST">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Nachricht</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+
+            <div class="form-submit">
+              <Button type="submit" variant="primary">Nachricht senden</Button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

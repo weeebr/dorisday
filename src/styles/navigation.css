@@ -1,21 +1,21 @@
 /**
  * Navigation Component
- * Refined design with enhanced readability and smooth mobile transitions
+ * Main navigation with hover effects
  */
 
 .nav {
   display: flex;
   align-items: center;
   padding: var(--space-component-md) 0;
-}
 
-.nav ul {
-  display: flex;
-  align-items: center;
-  gap: var(--space-layout-md);
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  ul {
+    display: flex;
+    align-items: center;
+    gap: var(--space-layout-md);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 }
 
 .nav-link {
@@ -28,161 +28,31 @@
   font-weight: var(--font-weight-light);
   position: relative;
   white-space: nowrap;
-}
+  cursor: pointer;
 
-.nav-link:hover {
-  color: var(--color-text-base);
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0.5rem;
-  left: 50%;
-  width: 0;
-  height: 1px;
-  background: currentColor;
-  transition: all var(--transition-bounce);
-  transform: translateX(-50%);
-}
-
-.nav-link:hover::after {
-  width: calc(100% - 2.5rem);
-}
-
-/* Mobile Navigation */
-@media (max-width: 1300px) {
-  .nav {
-    position: fixed;
-    inset: 0;
-    z-index: var(--z-overlay);
-    padding: 0;
-    visibility: hidden;
-    opacity: 0;
-    transition:
-      visibility 0s linear var(--transition-normal),
-      opacity var(--transition-normal);
-  }
-
-  .nav-backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    opacity: 0;
-    transition: opacity var(--transition-normal);
-  }
-
-  .nav-content {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: min(100%, 400px);
-    height: 100%;
-    background: var(--color-surface-alt);
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
-    transform: translateX(100%);
-    transition: transform var(--transition-bounce);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow-y: auto;
-  }
-
-  .nav ul {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-layout-lg);
-    padding: var(--space-layout-xl);
-    width: 100%;
-  }
-
-  .nav-link {
-    font-size: var(--font-size-lg);
-    padding: var(--space-component-lg);
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-    transform: translateX(50px);
-    opacity: 0;
-    transition: all var(--transition-bounce);
-    transition-delay: calc(var(--item-index, 0) * 0.1s);
-  }
-
-  .nav-link:hover {
+  &:hover {
     color: var(--color-text-base);
-    transform: translateX(0) scale(1.05);
   }
 
-  .nav-link::after {
-    bottom: 1rem;
-    background: linear-gradient(90deg, #2a1810, #4a3830);
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: all var(--transition-bounce);
+    transform: translateX(-50%);
   }
 
-  /* Open State */
-  body.menu-open {
-    overflow: hidden;
+  &:hover::after {
+    width: calc(100% - 2.5rem);
   }
+}
 
-  body.menu-open .nav {
-    visibility: visible;
-    opacity: 1;
-    transition-delay: 0s;
-  }
-
-  body.menu-open .nav-backdrop {
-    opacity: 1;
-  }
-
-  body.menu-open .nav-content {
-    transform: translateX(0);
-  }
-
-  body.menu-open .nav-link {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  /* Menu Toggle Animation */
-  .menu-toggle {
-    z-index: calc(var(--z-overlay) + 1);
-    width: 30px;
-    height: 24px;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: transform var(--transition-normal);
-  }
-
-  .menu-toggle:hover {
-    transform: scale(1.1);
-  }
-
-  .menu-toggle span {
-    display: block;
-    width: 100%;
-    height: 2px;
-    background: var(--color-text-base);
-    transform-origin: center;
-    transition: all var(--transition-normal);
-  }
-
-  .menu-toggle.active span:nth-child(1) {
-    transform: translateY(11px) rotate(45deg);
-  }
-
-  .menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-    transform: translateX(-10px);
-  }
-
-  .menu-toggle.active span:nth-child(3) {
-    transform: translateY(-11px) rotate(-45deg);
+@media (max-width: 1300px) {
+  .nav ul {
+    display: none;
   }
 }

@@ -1,0 +1,71 @@
+/**
+ * Card With Image Component
+ * Clean and minimal design with subtle hover effects
+ */
+
+.card-with-image {
+  background: var(--color-surface-alt);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-muted);
+  overflow: hidden;
+}
+
+.card-with-image:hover {
+  opacity: 0.85;
+}
+
+.card-with-image__inner {
+  position: relative;
+  margin: -1px -1px 0;
+}
+
+.card-with-image__image {
+  overflow: hidden;
+  background: var(--color-surface-muted);
+  aspect-ratio: 4/3;
+}
+
+.card-with-image__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.card-with-image__title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: var(--space-layout-lg);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-xl);
+  letter-spacing: var(--letter-spacing-wide);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-tight);
+  color: var(--color-surface-alt);
+  margin: 0;
+  text-align: center;
+  background: linear-gradient(
+    to top,
+    rgba(26, 26, 26, 0.75) 0%,
+    rgba(26, 26, 26, 0.5) 30%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+.card-with-image__content {
+  padding: var(--space-layout-sm);
+}
+
+.card-with-image__content p {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-base);
+  letter-spacing: var(--letter-spacing-wide);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+  text-align: center;
+}

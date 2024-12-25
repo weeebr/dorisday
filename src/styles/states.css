@@ -1,0 +1,41 @@
+/**
+ * Global State Management
+ * Contains styles for global states like menu open, transitions, etc.
+ */
+
+/* Content states when menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
+body.menu-open main {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  filter: blur(8px);
+  transition: filter 0.5s var(--ease-out-circ);
+}
+
+body:not(.menu-open) main {
+  filter: blur(0);
+  transition: filter 0.5s var(--ease-out-circ);
+}
+
+/* Logo states */
+.logo {
+  position: relative;
+  z-index: 1;
+  transform: translate(0, 0);
+  transition: transform 0.5s var(--ease-out-circ);
+}
+
+body.menu-open header .logo {
+  position: fixed;
+  z-index: 1001;
+  right: 127px;
+  top: 114px;
+}
+
+body:not(.menu-open) .logo {
+  position: relative;
+}

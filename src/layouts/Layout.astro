@@ -4,6 +4,12 @@ import Navigation from '../components/Navigation.astro';
 import MobileMenu from '../components/MobileMenu.astro';
 import Footer from '../components/Footer.astro';
 
+// Import global styles
+import '@/styles/_tokens.css';
+import '@/styles/_base.css';
+import '@/styles/_components.css';
+import '@/styles/header.css';
+
 interface Props {
   title: string;
 }
@@ -55,13 +61,6 @@ const navItems = [
     <Footer />
   </body>
 </html>
-
-<style is:global>
-  @import '@/styles/_tokens.css';
-  @import '@/styles/_base.css';
-  @import '@/styles/_components.css';
-  @import '@/styles/header.css';
-</style>
 
 <script>
   // Header scroll effect
