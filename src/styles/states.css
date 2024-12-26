@@ -10,8 +10,8 @@ body.menu-open {
 
 body.menu-open main {
   pointer-events: none;
-  user-select: none;
   -webkit-user-select: none;
+  user-select: none;
   filter: blur(8px);
   transition: filter 0.5s var(--ease-out-circ);
 }

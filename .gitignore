@@ -26,5 +26,6 @@ pnpm-debug.log*
 *.swp
 *.swo
 
-# Astro
+# Astro/PNPM
 .astro/
+pnpm-lock.yaml

@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import react from '@astrojs/react';
 import path from 'path';
+import react from '@astrojs/react';
 
 export default defineConfig({
   integrations: [react()],
@@ -10,6 +10,9 @@ export default defineConfig({
       alias: {
         '@': path.resolve('./src'),
       },
+    },
+    css: {
+      postcss: './postcss.config.cjs',
     },
   },
 });

@@ -79,6 +79,7 @@
         transform: translateX(0);
         height: 100vh;
         transition-delay: 0s;
+        background: var(--color-surface-muted);
 
         li {
           opacity: 1;
@@ -115,7 +116,9 @@
     inset: 0;
     height: 100vh;
     width: 100vw;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
     opacity: 0;
     visibility: hidden;
     transition:
@@ -141,7 +144,8 @@
       transform 0.5s var(--ease-out-circ),
       height 0.5s var(--ease-out-circ),
       opacity 0.5s var(--ease-out-circ),
-      visibility 0s linear 0.5s;
+      visibility 0s linear 0.5s,
+      background-color 0.5s var(--ease-out-circ);
     z-index: 1000;
     display: flex;
     flex-direction: column;
@@ -215,10 +219,13 @@
       pointer-events: none;
       -webkit-user-select: none;
       user-select: none;
-      filter: blur(8px);
-      transition:
-        filter 0.5s var(--ease-out-circ),
-        pointer-events 0s;
+      transition: filter 0.5s var(--ease-out-circ);
+    }
+
+    .mobile-backdrop {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
     }
 
     header .logo {
@@ -234,7 +241,6 @@
 
   :global(body:not(.menu-open)) {
     main {
-      filter: blur(0);
       transition: filter 0.5s var(--ease-out-circ);
     }
 
