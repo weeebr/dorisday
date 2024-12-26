@@ -93,4 +93,11 @@
   --z-above: 10;
   --z-header: 100;
   --z-overlay: 1000;
+
+  /* Scroll Behavior */
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+
+  /* Layout */
+  --header-height: 135px;
 }

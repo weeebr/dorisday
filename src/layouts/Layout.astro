@@ -3,6 +3,7 @@ import Logo from '../components/Logo.astro';
 import Navigation from '../components/Navigation.astro';
 import MobileMenu from '../components/MobileMenu.astro';
 import Footer from '../components/Footer.astro';
+import { navItems } from '../constants';
 
 // Import global styles
 import '@/styles/_tokens.css';
@@ -15,14 +16,6 @@ interface Props {
 }
 
 const { title } = Astro.props;
-
-const navItems = [
-  { href: '#welcome', text: 'WILLKOMMEN' },
-  { href: '#rooms', text: 'BED & BEING' },
-  { href: '#cafe', text: 'NOMAD CAFÉ' },
-  { href: '#kultur', text: 'KULTUR' },
-  { href: '#contact', text: 'KONTAKT' },
-];
 ---
 
 <!doctype html>
@@ -68,7 +61,7 @@ const navItems = [
 
   if (header) {
     const updateHeaderState = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 0) {
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');

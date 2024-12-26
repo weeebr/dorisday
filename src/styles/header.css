@@ -9,7 +9,7 @@
   left: 0;
   right: 0;
   z-index: var(--z-header);
-  background: var(--color-surface-alt);
+  background: transparent;
   transition: all var(--transition-normal);
 
   .header-content {
@@ -18,10 +18,9 @@
     justify-content: space-between;
     padding: var(--space-component-md) 0;
   }
-}
 
-/* Scrolled State */
-:global(body.scrolled) .header {
-  background: var(--color-surface-alt);
-  box-shadow: var(--shadow-sm);
+  &.scrolled {
+    background: var(--color-surface-alt);
+    box-shadow: var(--shadow-sm);
+  }
 }
