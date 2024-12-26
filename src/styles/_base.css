@@ -64,6 +64,11 @@
   --color-surface-alt: #ffffff;
   --color-border-muted: #e6e6e6;
 
+  /* Theme colors */
+  --color-jungle-dark: #26a55e;
+  --color-jungle-light: #a5b5ac;
+  --color-jungle-muted: rgba(165, 181, 172, 0.2);
+
   /* Typography */
   --letter-spacing-tighter: -0.05em;
   --letter-spacing-tight: -0.025em;

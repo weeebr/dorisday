@@ -1,6 +1,6 @@
 /**
  * Cafe Section
- * Cafe and bistro showcase
+ * Jungle-themed cafe showcase
  */
 
 .cafe {
@@ -14,11 +14,26 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80');
+    background-image: url('https://images.unsplash.com/photo-1489777201862-e0f3b05268f8??auto=format&fit=crop&q=80');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    opacity: 0.08;
+    opacity: 0.12;
+    filter: saturate(0.95) brightness(1.1);
+  }
+
+  /* Decorative elements */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 85% 85%, var(--color-jungle-muted) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .section-title--primary::after {
+    background: var(--color-jungle-dark);
+    opacity: 0.3;
   }
 
   h2 {
@@ -81,7 +96,7 @@
   }
 
   .description {
-    color: var(--color-text-muted);
+    color: var(--color-jungle-light);
     font-size: var(--font-size-sm);
     letter-spacing: var(--letter-spacing-normal);
     line-height: var(--line-height-relaxed);

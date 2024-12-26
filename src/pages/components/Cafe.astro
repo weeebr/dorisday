@@ -6,36 +6,36 @@ import '@/styles/cafe.css';
 const menu = {
   drinks: [
     {
-      name: 'Bio Kaffee',
-      description: 'Frisch geröstete Bohnen aus fairem Handel',
-      price: '4.50',
+      name: 'Jungle Brew',
+      description: 'Bio-Kaffee aus nachhaltigem Regenwald-Anbau',
+      price: '4.90',
     },
     {
-      name: 'Cappuccino',
-      description: 'Mit aufgeschäumter Bio-Milch',
-      price: '5.50',
-    },
-    {
-      name: 'Matcha Latte',
-      description: 'Hochwertiges Matcha mit Hafermilch',
+      name: 'Golden Monkey Latte',
+      description: 'Cremiger Latte mit Kokosblütensirup und Zimt',
       price: '6.50',
+    },
+    {
+      name: 'Tropical Matcha',
+      description: 'Matcha-Tee mit Passionsfrucht und Kokosmilch',
+      price: '7.50',
     },
   ],
   food: [
     {
-      name: 'Hausgemachter Kuchen',
-      description: 'Täglich wechselndes Angebot',
-      price: '6.50',
+      name: 'Buddha Bowl',
+      description: 'Quinoa, Avocado, Mango und geröstete Cashews',
+      price: '18.50',
     },
     {
-      name: 'Croissant',
-      description: 'Frisch gebacken',
-      price: '4.50',
+      name: 'Jungle Toast',
+      description: 'Hausgemachtes Bananenbrot mit Beeren und Ahornsirup',
+      price: '9.50',
     },
     {
-      name: 'Avocado Toast',
-      description: 'Mit Bio-Eiern und Sprossen',
-      price: '12.50',
+      name: 'Paradise Acai Bowl',
+      description: 'Frische Früchte, Granola und Kokosraspeln',
+      price: '14.50',
     },
   ],
 };
@@ -44,15 +44,16 @@ const menu = {
 <section id="cafe" class="layout-outer cafe">
   <div class="layout-inner">
     <div class="title-container">
-      <h2 class="section-title section-title--primary">Café & Bistro</h2>
+      <h2 class="section-title section-title--primary">Jungle Café</h2>
     </div>
     <p class="cafe-intro">
-      Genießen Sie eine Pause vom Alltag in unserem gemütlichen Café. Wir servieren ausgewählte
-      Bio-Kaffeespezialitäten und hausgemachte Leckereien in entspannter Atmosphäre.
+      Tauchen Sie ein in unsere grüne Oase. Zwischen goldenen Tierskulpturen und üppigen Pflanzen
+      servieren wir Ihnen ausgewählte Bio-Kaffeespezialitäten und exotische Köstlichkeiten. Ein
+      Hauch von Dschungel-Atmosphäre mitten in Aarau.
     </p>
 
     <div class="menu-grid">
-      <CardOutlined title="Getränke" variant="dark">
+      <CardOutlined title="Getränke" variant="jungle">
         <div class="menu-items">
           {
             menu.drinks.map((item) => (
@@ -68,7 +69,7 @@ const menu = {
         </div>
       </CardOutlined>
 
-      <CardOutlined title="Speisen" variant="dark">
+      <CardOutlined title="Speisen" variant="jungle">
         <div class="menu-items">
           {
             menu.food.map((item) => (
