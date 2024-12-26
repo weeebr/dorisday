@@ -1,7 +1,7 @@
 ---
 import CardOutlined from '../../components/CardOutlined.astro';
 import Button from '../../components/Button.astro';
-import '@/styles/cafe.css';
+import styles from '../../styles/cafe.module.css';
 
 const menu = {
   drinks: [
@@ -41,28 +41,28 @@ const menu = {
 };
 ---
 
-<section id="cafe" class="layout-outer cafe">
+<section id="cafe" class={`layout-outer ${styles.root}`}>
   <div class="layout-inner">
     <div class="title-container">
-      <h2 class="section-title section-title--primary">Jungle Café</h2>
+      <h2 class={`section-title section-title--primary ${styles.title}`}>Jungle Café</h2>
     </div>
-    <p class="cafe-intro">
+    <p class={styles.intro}>
       Tauchen Sie ein in unsere grüne Oase. Zwischen goldenen Tierskulpturen und üppigen Pflanzen
       servieren wir Ihnen ausgewählte Bio-Kaffeespezialitäten und exotische Köstlichkeiten. Ein
       Hauch von Dschungel-Atmosphäre mitten in Aarau.
     </p>
 
-    <div class="menu-grid">
+    <div class={styles.menuGrid}>
       <CardOutlined title="Getränke" variant="jungle">
-        <div class="menu-items">
+        <div class={styles.menuItems}>
           {
             menu.drinks.map((item) => (
-              <div class="menu-item">
+              <div class={styles.menuItem}>
                 <div>
-                  <h4>{item.name}</h4>
-                  <p class="description">{item.description}</p>
+                  <h4 class={styles.menuItemTitle}>{item.name}</h4>
+                  <p class={styles.description}>{item.description}</p>
                 </div>
-                <span class="price">CHF {item.price}</span>
+                <span class={styles.price}>CHF {item.price}</span>
               </div>
             ))
           }
@@ -70,15 +70,15 @@ const menu = {
       </CardOutlined>
 
       <CardOutlined title="Speisen" variant="jungle">
-        <div class="menu-items">
+        <div class={styles.menuItems}>
           {
             menu.food.map((item) => (
-              <div class="menu-item">
+              <div class={styles.menuItem}>
                 <div>
-                  <h4>{item.name}</h4>
-                  <p class="description">{item.description}</p>
+                  <h4 class={styles.menuItemTitle}>{item.name}</h4>
+                  <p class={styles.description}>{item.description}</p>
                 </div>
-                <span class="price">CHF {item.price}</span>
+                <span class={styles.price}>CHF {item.price}</span>
               </div>
             ))
           }
@@ -86,7 +86,7 @@ const menu = {
       </CardOutlined>
     </div>
 
-    <div class="cafe-cta">
+    <div class={styles.cta}>
       <Button href="#contact" variant="primary">Reservierung anfragen</Button>
     </div>
   </div>

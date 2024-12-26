@@ -1,6 +1,6 @@
 ---
 import Button from '../../components/Button.astro';
-import '@/styles/contact.css';
+import styles from '../../styles/contact.module.css';
 
 const contactInfo = {
   address: {
@@ -18,56 +18,56 @@ const contactInfo = {
 };
 ---
 
-<section id="contact" class="layout-outer contact">
-  <div class="image-container">
+<section id="contact" class={`layout-outer ${styles.root}`}>
+  <div class={styles.imageContainer}>
     <img
       src="https://images.unsplash.com/photo-1517697471339-4aa32003c11a?auto=format&fit=crop&q=80"
       alt="Elegant marble texture background"
-      class="image-container__image"
+      class={styles.image}
     />
   </div>
-  <div class="content-wrapper">
+  <div class={styles.contentWrapper}>
     <div class="layout-inner">
       <div class="title-container">
-        <h2 class="section-title section-title--secondary">Kontakt</h2>
+        <h2 class={`section-title section-title--secondary`}>Kontakt</h2>
       </div>
-      <p class="contact-intro">
+      <p class={styles.intro}>
         Haben Sie Fragen zu unseren Produkten oder möchten Sie einen persönlichen Termin
         vereinbaren? Wir freuen uns auf Ihre Nachricht.
       </p>
 
-      <div class="contact-grid">
-        <div class="contact-info">
+      <div class={styles.grid}>
+        <div class={styles.info}>
           {
             Object.entries(contactInfo).map(([key, info]) => (
-              <div class="info-group">
-                <h4>{info.title}</h4>
+              <div class={styles.infoGroup}>
+                <h4 class={styles.infoGroupTitle}>{info.title}</h4>
                 {info.lines.map((line) => (
-                  <p>{line}</p>
+                  <p class={styles.infoGroupText}>{line}</p>
                 ))}
               </div>
             ))
           }
         </div>
 
-        <div class="contact-form">
+        <div class={styles.form}>
           <form action="/api/contact" method="POST">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" required />
+            <div class={styles.formGroup}>
+              <label class={styles.label} for="name">Name</label>
+              <input class={styles.input} type="text" id="name" name="name" required />
             </div>
 
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required />
+            <div class={styles.formGroup}>
+              <label class={styles.label} for="email">Email</label>
+              <input class={styles.input} type="email" id="email" name="email" required />
             </div>
 
-            <div class="form-group">
-              <label for="message">Nachricht</label>
-              <textarea id="message" name="message" required></textarea>
+            <div class={styles.formGroup}>
+              <label class={styles.label} for="message">Nachricht</label>
+              <textarea class={styles.textarea} id="message" name="message" required></textarea>
             </div>
 
-            <div class="form-submit">
+            <div class={styles.formSubmit}>
               <Button type="submit" variant="primary">Nachricht senden</Button>
             </div>
           </form>

@@ -1,23 +1,25 @@
 ---
 import Button from '../../components/Button.astro';
-import '@/styles/hero.css';
+import styles from '../../styles/hero.module.css';
 ---
 
-<section class="hero">
-  <div class="image-container">
+<section class={styles.root}>
+  <div class={styles.imageContainer}>
     <img
       src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80"
       alt="Elegant fashion display in natural light"
-      class="image-container__image"
+      class={styles.image}
     />
   </div>
-  <div class="content-wrapper">
-    <div class="container">
+  <div class={styles.contentWrapper}>
+    <div class={styles.container}>
       <div class="container__content container__content--narrow content--center">
-        <h1>Doris Day</h1>
-        <p>Zeitlose Mode & Eleganz in Aarau</p>
-        <Button href="#collection" variant="secondary">Shop entdecken</Button>
-        <p>
+        <h1 class={styles.title}>Doris Day</h1>
+        <p class={styles.subtitle}>Zeitlose Mode & Eleganz in Aarau</p>
+        <div class={styles.buttonWrapper}>
+          <Button href="#collection" variant="secondary">Shop entdecken</Button>
+        </div>
+        <p class={styles.description}>
           Entdecken Sie zeitlose Mode und elegante Accessoires in unserem Boutique in Aarau. Wir
           bieten sorgfältig ausgewählte Kollektionen, die Stil und Komfort perfekt vereinen.
         </p>

@@ -1,0 +1,95 @@
+/**
+ * Hero Component
+ * Elegant fashion presentation
+ */
+
+.root {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.imageContainer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-inset);
+}
+
+.contentWrapper {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  position: relative;
+  z-index: var(--z-above);
+  padding-block: var(--space-layout-lg);
+}
+
+.title {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-4xl);
+  letter-spacing: var(--letter-spacing-widest);
+  margin-bottom: var(--space-component-md);
+  font-weight: var(--font-weight-thin);
+  color: var(--color-text-base);
+  line-height: var(--line-height-tight);
+}
+
+.subtitle {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-xl);
+  letter-spacing: var(--letter-spacing-wider);
+  font-weight: var(--font-weight-light);
+  margin-bottom: var(--space-layout-md);
+  color: var(--color-text-muted);
+  max-width: 40ch;
+  margin-inline: auto;
+}
+
+.description {
+  font-size: var(--font-size-base);
+  letter-spacing: var(--letter-spacing-wide);
+  line-height: var(--line-height-relaxed);
+  font-weight: var(--font-weight-light);
+  color: var(--color-text-base);
+  max-width: 45ch;
+  margin-inline: auto;
+  margin-top: var(--space-layout-md);
+}
+
+.buttonWrapper {
+  margin: var(--space-layout-md) 0;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-lg);
+  }
+
+  .description {
+    font-size: var(--font-size-sm);
+    max-width: 35ch;
+  }
+}

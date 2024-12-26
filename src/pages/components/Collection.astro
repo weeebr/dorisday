@@ -1,7 +1,7 @@
 ---
 import Button from '../../components/Button.astro';
 import CardWithImage from '../../components/CardWithImage.astro';
-import '@/styles/collection.css';
+import styles from '../../styles/collection.module.css';
 
 const collections = [
   {
@@ -22,17 +22,17 @@ const collections = [
 ];
 ---
 
-<section id="collection" class="layout-outer collection">
+<section id="collection" class={`layout-outer ${styles.root}`}>
   <div class="layout-inner">
     <div class="title-container">
-      <h2 class="section-title section-title--secondary">Kollektionen</h2>
+      <h2 class={`section-title section-title--secondary ${styles.title}`}>Kollektionen</h2>
     </div>
-    <p class="collection-intro">
+    <p class={styles.intro}>
       Entdecken Sie unsere sorgfältig kuratierten Kollektionen. Jedes Stück wurde mit Bedacht auf
       Qualität, Nachhaltigkeit und zeitloses Design ausgewählt.
     </p>
 
-    <div class="collection-grid">
+    <div class={styles.grid}>
       {
         collections.map((collection) => (
           <CardWithImage
@@ -45,7 +45,7 @@ const collections = [
       }
     </div>
 
-    <div class="collection-cta">
+    <div class={styles.cta}>
       <Button href="/collection" variant="primary">Alle Kollektionen</Button>
     </div>
   </div>

@@ -1,6 +1,6 @@
 ---
 import CardOutlined from '../../components/CardOutlined.astro';
-import '@/styles/kultur.css';
+import styles from '../../styles/kultur.module.css';
 
 const events = [
   {
@@ -24,22 +24,22 @@ const events = [
 ];
 ---
 
-<section id="kultur" class="layout-outer kultur">
+<section id="kultur" class={`layout-outer ${styles.root}`}>
   <div class="layout-inner">
     <div class="title-container">
-      <h2 class="section-title section-title--primary">Kultur & Events</h2>
+      <h2 class={`section-title section-title--primary ${styles.title}`}>Kultur & Events</h2>
     </div>
-    <p class="kultur-intro">
+    <p class={styles.intro}>
       Mode ist mehr als Kleidung. Entdecken Sie bei uns regelmäßig neue Ausstellungen, Workshops und
       Events.
     </p>
 
-    <div class="events-grid">
+    <div class={styles.grid}>
       {
         events.map((event) => (
           <CardOutlined title={event.title} variant="light">
-            <div class="event-date">{event.date}</div>
-            <p>{event.description}</p>
+            <div class={styles.eventDate}>{event.date}</div>
+            <p class={styles.description}>{event.description}</p>
           </CardOutlined>
         ))
       }

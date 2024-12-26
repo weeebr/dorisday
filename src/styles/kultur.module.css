@@ -1,0 +1,70 @@
+/**
+ * Kultur Section
+ * Cultural events showcase
+ */
+
+.root {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background-color: #b66e49;
+  background-color: rgb(182, 110, 73, 0.07);
+}
+
+.title {
+  text-align: center;
+  font-size: var(--font-size-xl);
+  letter-spacing: var(--letter-spacing-wider);
+  margin-bottom: var(--space-component-md);
+  font-weight: var(--font-weight-light);
+  color: var(--color-text-base);
+}
+
+.intro {
+  text-align: center;
+  max-width: 60ch;
+  margin-inline: auto;
+  margin-bottom: var(--space-layout-lg);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  letter-spacing: var(--letter-spacing-wide);
+  line-height: var(--line-height-relaxed);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-layout-md);
+  margin-bottom: var(--space-layout-xl);
+}
+
+.eventDate {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-sm);
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--color-primary-base);
+  font-weight: var(--font-weight-light);
+  opacity: 0.8;
+  padding-bottom: var(--space-layout-xs);
+}
+
+.description {
+  font-size: var(--font-size-xs);
+}
+
+.cta {
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
